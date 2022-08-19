@@ -1,6 +1,10 @@
-body {
-    margin: 0;
-    head {
-        left: 0;
-    }
-}
+@import "./utilities/variables";
+@import "./utilities/coloresYTipografias";
+@import "./utilities/reseteo";
+@import "./utilities/mediaQueries";
+
+@import "./layout/header";
+@import "./layout/mainIndex";
+@import "./layout/mainPortfolioArquitectura";
+@import "./layout/mainPortfolioFullStack";
+@import "./layout/footer";

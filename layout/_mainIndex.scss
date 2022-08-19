@@ -1,0 +1,172 @@
+body {
+    z-index: 1;
+}
+main {
+    grid-area: main;
+    margin-top: 15%;
+
+    .portadaInicio {
+        width: 100%;
+        padding: 15%;
+        background-image: url("../images/inicio.jpg");
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h1 {
+            margin: 0% 0% 5% 0%;
+            text-align: center;
+            font-family: $tipografia;
+            font-weight: 550;
+            color: $colorLetras;
+
+            &:hover {
+                color: $hover;
+                transform: scale(1.1);
+            }
+        }
+
+        p {
+            margin: 0% 15% 0% 15%;
+            text-align: center;
+            font-family: $tipografia;
+            font-weight: 400;
+            line-height: 2rem;
+            color: $colorLetras;
+        }
+    }
+
+    .sobreMiInicio {
+        margin: 5%;
+        display: grid;
+        grid-template-areas: 
+        "sobreMi"
+        "textoYFoto";
+
+        .hoverTitulos {
+            h2 {
+                font-family: $tipografia;
+                font-weight: 600;
+                color: $colorLetras;
+                text-align: center;
+                grid-area: sobreMi;
+            }
+    
+            & :hover {
+                text-decoration: underline;
+                color: $hover;
+            }
+        }
+
+        .textoYFoto {
+            margin-top: 3%;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-items: center;
+            align-items: center;
+            grid-area: textoYFoto;
+
+            p {
+                margin: 5% 10% 0% 10%;
+                font-family: $tipografia;
+                font-weight: 400;
+                text-align: justify;
+
+                @include pantallaGrande {
+                    margin: 0% 10% 0% 5%;
+                }
+            }
+
+            .letrasSobreMi {
+                color: $palabrasDestacadas;
+            }
+
+            picture {
+                margin: 3% 0% 3% 0%;
+
+                img {
+                    padding: 0%;
+                    border-radius: 3%;
+                }
+
+                @include pantallaGrande {
+                    margin: 0% 5% 0% 0%;
+                }
+
+                @include pantallaPanoramica {
+                    margin: 0% 10% 0% 0%;
+                }
+            }
+
+            @include pantallaGrande {
+                display: flex;
+                flex-direction: row;
+                justify-items: center;
+                align-items: center;
+            }
+        }
+
+        @include pantallaGrande {
+            margin: 5% 10% 5% 10%;
+
+            p {
+                line-height: 2rem;
+            }
+        }
+
+        @include pantallaPanoramica {
+            margin: 5% 10% 5% 10%;
+
+            p {
+                margin-right: 10%;
+                line-height: 2.5rem;
+            }
+        }
+    }
+
+    .contactoInicio {
+        .hoverTitulos {
+            h2 {
+                font-family: $tipografia;
+                font-weight: 600;
+                color: $colorLetras;
+                text-align: center;
+            }
+    
+            & :hover {
+                text-decoration: underline;
+                color: $hover;
+            }
+        }
+
+        p {
+            margin: 2% 0% 4% 0%;
+            font-family: $tipografia;
+            color: $colorLetras;
+            text-align: center;
+        }
+
+        .redesSociales {
+            margin: 2% 5% 5% 5%;
+            display: flex;
+            justify-content: space-evenly;
+
+            .fa-brands {
+                color: $colorLetras;
+            }
+
+            & :hover {
+                color: $hover;
+            }
+        }
+    }
+
+    @include celularHorizontal {
+        margin-top: 10%;
+    }
+
+    @include pantallaPanoramica {
+        margin-top: 5%;
+    }
+}

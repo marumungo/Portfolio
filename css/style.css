@@ -1,7 +1,469 @@
-body {
+@charset "UTF-8";
+/* paleta de colores 
+#d9a2a2
+#a48181
+#434343
+*/
+/* llamado a las tipografías */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+/* tipografías
+font-family: 'Poppins', sans-serif;
+*/
+/* reseteo */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body head {
-  left: 0;
+/* media querie 1 (pantalla celular horizontal 576px) */
+/* media querie 2 (pantalla mediana 768px) */
+/* media querie 3 (pantalla grande 992px) */
+/* media querie 4 (pantalla panorámica 1200px) */
+body {
+  display: grid;
+  grid-template-areas: "navbar" "main" "footer";
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  background-color: #a48181;
+  z-index: 2;
+  grid-area: navbar;
+}
+
+header .navbar-light {
+  padding: 0%;
+}
+
+header .navbar-light .navbar-brand {
+  color: white;
+  font-family: NEONLEDLightRegular, NEON LED Light;
+  font-size: 3rem;
+}
+
+header .navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
+header .navbar-light .navbar-nav .nav-link :hover {
+  color: #d9a2a2;
+}
+
+header .navbar-light .navbar-nav .nav-link :focus {
+  color: #d9a2a2;
+}
+
+header nav {
+  margin: 1%;
+  background-color: #a48181;
+}
+
+header nav .nav-link {
+  color: white;
+}
+
+header nav .nav-link :hover {
+  color: #d9a2a2;
+}
+
+header nav .nav-link :focus {
+  color: #d9a2a2;
+}
+
+header nav div a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+header nav div button {
+  margin-right: 5%;
+}
+
+@media (min-width: 992px) {
+  header nav div #navbarNavAltMarkup {
+    display: flex;
+    justify-content: right;
+  }
+}
+
+body {
+  z-index: 1;
+}
+
+main {
+  grid-area: main;
+  margin-top: 15%;
+}
+
+main .portadaInicio {
+  width: 100%;
+  padding: 15%;
+  background-image: url("../images/inicio.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main .portadaInicio h1 {
+  margin: 0% 0% 5% 0%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 550;
+  color: #434343;
+}
+
+main .portadaInicio h1:hover {
+  color: #a48181;
+  transform: scale(1.1);
+}
+
+main .portadaInicio p {
+  margin: 0% 15% 0% 15%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 2rem;
+  color: #434343;
+}
+
+main .sobreMiInicio {
+  margin: 5%;
+  display: grid;
+  grid-template-areas: "sobreMi" "textoYFoto";
+}
+
+main .sobreMiInicio .hoverTitulos h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #434343;
+  text-align: center;
+  grid-area: sobreMi;
+}
+
+main .sobreMiInicio .hoverTitulos :hover {
+  text-decoration: underline;
+  color: #a48181;
+}
+
+main .sobreMiInicio .textoYFoto {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-items: center;
+  align-items: center;
+  grid-area: textoYFoto;
+}
+
+main .sobreMiInicio .textoYFoto p {
+  margin: 5% 10% 0% 10%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  text-align: justify;
+}
+
+@media (min-width: 992px) {
+  main .sobreMiInicio .textoYFoto p {
+    margin: 0% 10% 0% 5%;
+  }
+}
+
+main .sobreMiInicio .textoYFoto .letrasSobreMi {
+  color: #d9a2a2;
+}
+
+main .sobreMiInicio .textoYFoto picture {
+  margin: 3% 0% 3% 0%;
+}
+
+main .sobreMiInicio .textoYFoto picture img {
+  padding: 0%;
+  border-radius: 3%;
+}
+
+@media (min-width: 992px) {
+  main .sobreMiInicio .textoYFoto picture {
+    margin: 0% 5% 0% 0%;
+  }
+}
+
+@media (min-width: 1200px) {
+  main .sobreMiInicio .textoYFoto picture {
+    margin: 0% 10% 0% 0%;
+  }
+}
+
+@media (min-width: 992px) {
+  main .sobreMiInicio .textoYFoto {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 992px) {
+  main .sobreMiInicio {
+    margin: 5% 10% 5% 10%;
+  }
+  main .sobreMiInicio p {
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  main .sobreMiInicio {
+    margin: 5% 10% 5% 10%;
+  }
+  main .sobreMiInicio p {
+    margin-right: 10%;
+    line-height: 2.5rem;
+  }
+}
+
+main .contactoInicio .hoverTitulos h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #434343;
+  text-align: center;
+}
+
+main .contactoInicio .hoverTitulos :hover {
+  text-decoration: underline;
+  color: #a48181;
+}
+
+main .contactoInicio p {
+  margin: 2% 0% 4% 0%;
+  font-family: "Poppins", sans-serif;
+  color: #434343;
+  text-align: center;
+}
+
+main .contactoInicio .redesSociales {
+  margin: 2% 5% 5% 5%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+main .contactoInicio .redesSociales .fa-brands {
+  color: #434343;
+}
+
+main .contactoInicio .redesSociales :hover {
+  color: #a48181;
+}
+
+@media (min-width: 576px) {
+  main {
+    margin-top: 10%;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    margin-top: 5%;
+  }
+}
+
+main {
+  width: 100%;
+  height: auto;
+}
+
+main .portfolioArquitectura {
+  margin: 5% 5% 3% 5%;
+}
+
+main .portfolioArquitectura .hoverTitulos h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #434343;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  main .portfolioArquitectura .hoverTitulos h2 {
+    text-align: left;
+  }
+}
+
+main .portfolioArquitectura .hoverTitulos :hover {
+  text-decoration: underline;
+  color: #a48181;
+}
+
+main .portfolioArquitectura .proyectosArquitectura {
+  width: 100%;
+  margin-top: 3%;
+  display: grid;
+  justify-content: space-between;
+  grid-template-areas: "card" "card" "card" "card" "card" "card" "card" "card";
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main .portfolioArquitectura .proyectosArquitectura .card {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25%;
+}
+
+main .portfolioArquitectura .proyectosArquitectura .card img {
+  width: 100%;
+  grid-area: card;
+}
+
+main .portfolioArquitectura .proyectosArquitectura .card h5 {
+  font-family: "Poppins", sans-serif;
+  color: #434343;
+  font-weight: 600;
+}
+
+main .portfolioArquitectura .proyectosArquitectura .card p {
+  font-family: "Poppins", sans-serif;
+  color: #434343;
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+
+main .portfolioArquitectura .proyectosArquitectura .card .btn-primary {
+  background-color: #a48181;
+  border: none;
+}
+
+main .portfolioArquitectura .proyectosArquitectura .card .btn-primary:focus {
+  box-shadow: none;
+  border-color: none;
+}
+
+@media (min-width: 992px) {
+  main .portfolioArquitectura .proyectosArquitectura {
+    display: grid;
+    grid-template-areas: "card card card" "card card card";
+  }
+}
+
+@media (min-width: 1200px) {
+  main .portfolioArquitectura .proyectosArquitectura {
+    display: grid;
+    grid-template-areas: "card card card card" "card card card card";
+  }
+}
+
+main {
+  width: 100%;
+  height: auto;
+}
+
+main .portfolioFullStack {
+  margin: 5% 5% 3% 5%;
+}
+
+main .portfolioFullStack .hoverTitulos h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #434343;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  main .portfolioFullStack .hoverTitulos h2 {
+    text-align: left;
+  }
+}
+
+main .portfolioFullStack .hoverTitulos :hover {
+  text-decoration: underline;
+  color: #a48181;
+}
+
+main .portfolioFullStack .proyectosFullStack {
+  width: 100%;
+  margin-top: 3%;
+  display: grid;
+  justify-content: space-between;
+  grid-template-areas: "card" "card" "card" "card" "card" "card" "card" "card";
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main .portfolioFullStack .proyectosFullStack .card {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25%;
+}
+
+main .portfolioFullStack .proyectosFullStack .card img {
+  width: 100%;
+  grid-area: card;
+}
+
+main .portfolioFullStack .proyectosFullStack .card h5 {
+  font-family: "Poppins", sans-serif;
+  color: #434343;
+  font-weight: 600;
+}
+
+main .portfolioFullStack .proyectosFullStack .card p {
+  font-family: "Poppins", sans-serif;
+  color: #434343;
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+
+main .portfolioFullStack .proyectosFullStack .card .botonesFullStack {
+  display: flex;
+  justify-content: left;
+}
+
+main .portfolioFullStack .proyectosFullStack .card .botonesFullStack .btn1 {
+  margin-right: 28.5%;
+}
+
+main .portfolioFullStack .proyectosFullStack .card .botonesFullStack .btn-primary {
+  background-color: #a48181;
+  border: none;
+}
+
+main .portfolioFullStack .proyectosFullStack .card .botonesFullStack .btn-primary:focus {
+  box-shadow: none;
+  border-color: none;
+}
+
+@media (min-width: 992px) {
+  main .portfolioFullStack .proyectosFullStack {
+    display: grid;
+    grid-template-areas: "card card card" "card card card";
+  }
+}
+
+@media (min-width: 1200px) {
+  main .portfolioFullStack .proyectosFullStack {
+    display: grid;
+    grid-template-areas: "card card card card" "card card card card";
+  }
+}
+
+footer {
+  width: 100%;
+  padding: 2%;
+  background-color: #434343;
+  grid-area: footer;
+}
+
+footer p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer .designedBy :hover {
+  color: #d9a2a2;
 }

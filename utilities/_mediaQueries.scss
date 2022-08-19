@@ -1,0 +1,27 @@
+/* media querie 1 (pantalla celular horizontal 576px) */
+@mixin celularHorizontal {
+    @media (min-width: 576px) {
+            @content;
+    }
+}
+
+/* media querie 2 (pantalla mediana 768px) */
+@mixin pantallaMediana {
+    @media (min-width: 768px) {
+            @content;
+    }
+}
+
+/* media querie 3 (pantalla grande 992px) */
+@mixin pantallaGrande {
+    @media (min-width: 992px) {
+            @content;
+    }
+}
+
+/* media querie 4 (pantalla panorámica 1200px) */
+@mixin pantallaPanoramica {
+    @media (min-width: 1200px) {
+            @content;
+    }
+}

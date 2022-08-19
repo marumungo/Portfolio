@@ -1,0 +1,103 @@
+main {
+    width: 100%;
+    height: auto;
+
+    .portfolioFullStack {
+        margin: 5% 5% 3% 5%;
+
+        .hoverTitulos {
+            h2 {
+                font-family: $tipografia;
+                font-weight: 600;
+                color: $colorLetras;
+                text-align: center;
+
+                @include pantallaGrande {
+                    text-align: left;
+                }
+            }
+    
+            & :hover {
+                text-decoration: underline;
+                color: $hover;
+            }
+        }
+
+        .proyectosFullStack {
+            width: 100%;
+            margin-top: 3%;
+            display: grid;
+            justify-content: space-between;
+            grid-template-areas: 
+            "card"
+            "card"
+            "card"
+            "card"
+            "card"
+            "card"
+            "card"
+            "card";
+
+            display: flex;
+            flex-wrap: wrap;
+
+            .card {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 25%;
+
+                img {
+                    width: 100%;
+                    grid-area: card;
+                }
+
+                h5 {
+                    font-family: $tipografia;
+                    color: $colorLetras;
+                    font-weight: 600;
+                }
+
+                p {
+                    font-family: $tipografia;
+                    color: $colorLetras;
+                    font-weight: 400;
+                    font-size: 0.8rem;
+                    line-height: 1.5rem;
+                }
+
+                .botonesFullStack {
+                    display: flex;
+                    justify-content: left;
+
+                    .btn1 {
+                        margin-right: 28.5%;
+                    }
+
+                    .btn-primary {
+                        background-color: $colorBotones;
+                        border: none;
+
+                        &:focus {
+                            box-shadow: none;
+                            border-color: none;
+                        }
+                    }
+                }
+            }
+
+            @include pantallaGrande {
+                display: grid;
+                grid-template-areas: 
+                "card card card"
+                "card card card";
+            }
+
+            @include pantallaPanoramica {
+                display: grid;
+                grid-template-areas: 
+                "card card card card"
+                "card card card card";
+            }
+        }
+    }
+}

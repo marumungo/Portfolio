@@ -14,15 +14,70 @@
     </head>
     <body>
         <header>
-
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand">M</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-link" href="#sobreMi">Sobre mí</a>
+                        <a class="nav-link" href="./pages/portfolioArquitectura.html">Portfolio Arquitectura</a>
+                        <a class="nav-link" href="./pages/portfolioFullStack.html">Portfolio Full Stack</a>
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </header>
 
         <main>
+            <div class="portadaInicio">
+                <h1>MARIANA MUNGO</h1>
+                <p>Soy estudiante de Arquitectura y de Desarrollo Full Stack. Busco crecer laboralmente y desarrollar mis capacidades en un ambiente de trabajo. En esta plataforma podrán ver los trabajos que seleccioné, ya que que son los que más me representan.</p>
+            </div>
 
+            <div class="sobreMiInicio">
+                <div class="hoverTitulos">
+                    <h2 id="sobreMi">Sobre mí</h2>
+                </div>
+                <div class="textoYFoto">
+                    <p>¡Hola! Soy Mariana Mungo. Nací en Argentina y actualmente resido aquí. Estudio <span class="letrasSobreMi">Arquitectura</span> en la UBA desde el 2020 y <span class="letrasSobreMi">Desarrollo Full Stack</span> en Coderhouse desde el 2022. Ambas áreas realmente me apasionan y me entusiasma crecer día a día dentro de ellas. Amo <strong class="letrasSobreMi">diseñar</strong>, y me considero una persona <strong class="letrasSobreMi">autoexigente</strong> a nivel profesional, por lo que busco proponerme nuevos desafíos para poder superarme y mejorar mis habilidades. Soy una persona a la que no le cuesta para nada <strong class="letrasSobreMi">adaptarse</strong> a nuevos panoramas, y disfruto de hacer proyectos con un <strong class="letrasSobreMi">grupo de trabajo</strong>.</p>
+
+                    <picture>
+                        <source media="(min-width: 320px)" srcset="./images/marianaMungo320.jpg">
+                        <source media="(min-width: 576px)" srcset="./images/marianaMungo576.jpg">
+                        <source media="(min-width: 768px)" srcset="./images/marianaMungo768.jpg">
+                        <source media="(min-width: 992px)" srcset="./images/marianaMungo992.jpg">
+                        <source media="(min-width: 1200px)" srcset="./images/marianaMungo1200.jpg">
+                        <img src="./images/marianaMungo.jpg" alt="Foto Mariana Mungo">
+                    </picture>
+                </div>
+            </div>
+
+            <div class="contactoInicio">
+                <div class="hoverTitulos">
+                    <h2 id="contacto">Contacto</h2>
+                </div>
+                <p>marumungo@gmail.com</p>
+                <div class="redesSociales">
+                    <a href="https://www.linkedin.com/in/mariana-mungo-a396201ab/">
+                        <i class="fa-brands fa-linkedin fa-3x"></i>
+                    </a>
+                    <a href="https://github.com/marumungo">
+                        <i class="fa-brands fa-square-github fa-3x"></i>
+                    </a>
+                    <a href="https://www.behance.net/marumungo">
+                        <i class="fa-brands fa-square-behance fa-3x"></i>
+                    </a>
+                </div>
+            </div>
         </main>
 
         <footer>
-
+            <p>Copyright © 2020 - All Right Reserved.</p>
+            <p class="designedBy">Designed by <strong>Mariana Mungo</strong></p>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>

@@ -1,0 +1,73 @@
+body {
+    display: grid;
+    grid-template-areas: 
+    "navbar"
+    "main"
+    "footer";
+}
+header {
+    width: 100%;
+    position: fixed;
+    background-color: $navbar;
+    z-index: 2;
+    grid-area: navbar;
+
+    .navbar-light {
+        padding: 0%;
+        .navbar-brand {
+            color: white;
+            font-family: NEONLEDLightRegular, NEON LED Light;
+            font-size: 3rem;
+        }
+
+        .navbar-nav {
+            .nav-link {
+                color: white;
+                
+                & :hover {
+                    color: #d9a2a2;
+                }
+
+                & :focus {
+                    color: #d9a2a2;
+                }
+            }
+        }
+    }
+
+    nav {
+        margin: 1%;
+        background-color: $navbar;
+
+        .nav-link {
+            color: white;
+            
+            & :hover {
+                color: #d9a2a2;
+            }
+
+            & :focus {
+                color: #d9a2a2;
+            }
+        }
+
+        div {
+            a {
+                font-family: $tipografia;
+                font-weight: 400;
+                color: white;
+            }
+
+            button {
+                margin-right: 5%;
+            }
+
+            @include pantallaGrande {
+                #navbarNavAltMarkup {
+                    display: flex;
+                    justify-content: right;
+                }
+            }
+        }
+    }
+}
