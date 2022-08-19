@@ -3,7 +3,7 @@ main {
     height: auto;
 
     .portfolioFullStack {
-        margin: 5% 5% 3% 5%;
+        margin: 15% 5% 3% 5%;
 
         .hoverTitulos {
             h2 {
@@ -25,9 +25,9 @@ main {
 
         .proyectosFullStack {
             width: 100%;
-            margin-top: 3%;
+            margin-top: 5%;
             display: grid;
-            justify-content: space-between;
+            justify-content: space-evenly;
             grid-template-areas: 
             "card"
             "card"

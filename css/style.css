@@ -274,7 +274,7 @@ main {
 }
 
 main .portfolioArquitectura {
-  margin: 5% 5% 3% 5%;
+  margin: 15% 5% 3% 5%;
 }
 
 main .portfolioArquitectura .hoverTitulos h2 {
@@ -297,9 +297,9 @@ main .portfolioArquitectura .hoverTitulos :hover {
 
 main .portfolioArquitectura .proyectosArquitectura {
   width: 100%;
-  margin-top: 3%;
+  margin-top: 5%;
   display: grid;
-  justify-content: space-between;
+  justify-content: space-evenly;
   grid-template-areas: "card" "card" "card" "card" "card" "card" "card" "card";
   display: flex;
   flex-wrap: wrap;
@@ -360,7 +360,7 @@ main {
 }
 
 main .portfolioFullStack {
-  margin: 5% 5% 3% 5%;
+  margin: 15% 5% 3% 5%;
 }
 
 main .portfolioFullStack .hoverTitulos h2 {
@@ -383,9 +383,9 @@ main .portfolioFullStack .hoverTitulos :hover {
 
 main .portfolioFullStack .proyectosFullStack {
   width: 100%;
-  margin-top: 3%;
+  margin-top: 5%;
   display: grid;
-  justify-content: space-between;
+  justify-content: space-evenly;
   grid-template-areas: "card" "card" "card" "card" "card" "card" "card" "card";
   display: flex;
   flex-wrap: wrap;
