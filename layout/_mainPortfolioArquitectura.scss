@@ -12,6 +12,8 @@ main {
                 color: $colorLetras;
                 text-align: center;
 
+                margin-left: 3%;
+
                 @include pantallaGrande {
                     text-align: left;
                 }
@@ -44,7 +46,7 @@ main {
             .card {
                 display: flex;
                 justify-content: space-between;
-                margin-bottom: 25%;
+                margin-bottom: 10%;
 
                 img {
                     width: 100%;
@@ -81,6 +83,7 @@ main {
                 grid-template-areas: 
                 "card card card"
                 "card card card";
+                margin-bottom: 25%;
             }
 
             @include pantallaPanoramica {
@@ -89,6 +92,18 @@ main {
                 "card card card card"
                 "card card card card";
             }
+        }
+
+        @include celularHorizontal {
+            margin-top: 10%;
+        }
+
+        @include pantallaMediana {
+            margin-top: 8%;
+        }
+
+        @include pantallaGrande{
+            margin-top: 5%;
         }
     }
 }

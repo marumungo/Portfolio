@@ -27,7 +27,7 @@ main {
             width: 100%;
             margin-top: 5%;
             display: grid;
-            justify-content: space-evenly;
+            /*justify-content: space-evenly;*/
             grid-template-areas: 
             "card"
             "card"
@@ -44,7 +44,7 @@ main {
             .card {
                 display: flex;
                 justify-content: space-between;
-                margin-bottom: 25%;
+                margin-bottom: 10%;
 
                 img {
                     width: 100%;
@@ -90,6 +90,7 @@ main {
                 grid-template-areas: 
                 "card card card"
                 "card card card";
+                margin-bottom: 25%;
             }
 
             @include pantallaPanoramica {
@@ -98,6 +99,18 @@ main {
                 "card card card card"
                 "card card card card";
             }
+        }
+
+        @include celularHorizontal {
+            margin-top: 10%;
+        }
+
+        @include pantallaMediana {
+            margin-top: 8%;
+        }
+
+        @include pantallaGrande{
+            margin-top: 5%;
         }
     }
 }
