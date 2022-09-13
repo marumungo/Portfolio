@@ -408,6 +408,7 @@ main .portfolioFullStack .proyectosFullStack {
   grid-template-areas: "card" "card" "card" "card" "card" "card" "card" "card";
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 main .portfolioFullStack .proyectosFullStack .card {
@@ -458,7 +459,7 @@ main .portfolioFullStack .proyectosFullStack .card .botonesFullStack .btn-primar
   main .portfolioFullStack .proyectosFullStack {
     display: grid;
     grid-template-areas: "card card card" "card card card";
-    justify-content: left;
+    margin-left: -11.5%;
   }
 }
 
