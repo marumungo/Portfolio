@@ -91,7 +91,7 @@ main {
                 grid-template-areas: 
                 "card card card"
                 "card card card";
-                margin-left: -11.5%;
+                margin: 3% 0% 0% 0%;
             }
 
             @include pantallaPanoramica {
@@ -99,6 +99,7 @@ main {
                 grid-template-areas: 
                 "card card card card"
                 "card card card card";
+                margin-left: -7.5%;
             }
         }
 

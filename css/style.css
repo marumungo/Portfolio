@@ -459,7 +459,7 @@ main .portfolioFullStack .proyectosFullStack .card .botonesFullStack .btn-primar
   main .portfolioFullStack .proyectosFullStack {
     display: grid;
     grid-template-areas: "card card card" "card card card";
-    margin-left: -11.5%;
+    margin: 3% 0% 0% 0%;
   }
 }
 
@@ -467,6 +467,7 @@ main .portfolioFullStack .proyectosFullStack .card .botonesFullStack .btn-primar
   main .portfolioFullStack .proyectosFullStack {
     display: grid;
     grid-template-areas: "card card card card" "card card card card";
+    margin-left: -7.5%;
   }
 }
 
