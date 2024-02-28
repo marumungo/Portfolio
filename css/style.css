@@ -22,7 +22,9 @@ font-family: 'Poppins', sans-serif;
 /* media querie 4 (pantalla panorámica 1200px) */
 body {
   display: grid;
-  grid-template-areas: "navbar" "main" "footer";
+  grid-template-areas: "navbar"
+ "main"
+ "footer";
 }
 
 header {
@@ -132,7 +134,8 @@ main .portadaInicio p {
 main .sobreMiInicio {
   margin: 5%;
   display: grid;
-  grid-template-areas: "sobreMi" "textoYFoto";
+  grid-template-areas: "sobreMi"
+ "textoYFoto";
 }
 
 main .sobreMiInicio .hoverTitulos h2 {
@@ -301,7 +304,14 @@ main .portfolioArquitectura .proyectosArquitectura {
   margin-top: 5%;
   display: grid;
   justify-content: space-evenly;
-  grid-template-areas: "card" "card" "card" "card" "card" "card" "card" "card";
+  grid-template-areas: "card"
+ "card"
+ "card"
+ "card"
+ "card"
+ "card"
+ "card"
+ "card";
   display: flex;
   flex-wrap: wrap;
 }
@@ -344,14 +354,16 @@ main .portfolioArquitectura .proyectosArquitectura .card .btn-primary:focus {
 @media (min-width: 992px) {
   main .portfolioArquitectura .proyectosArquitectura {
     display: grid;
-    grid-template-areas: "card card card" "card card card";
+    grid-template-areas: "card card card"
+ "card card card";
   }
 }
 
 @media (min-width: 1200px) {
   main .portfolioArquitectura .proyectosArquitectura {
     display: grid;
-    grid-template-areas: "card card card card" "card card card card";
+    grid-template-areas: "card card card card"
+ "card card card card";
   }
 }
 
@@ -387,6 +399,7 @@ main .portfolioFullStack .hoverTitulos h2 {
   font-weight: 600;
   color: #434343;
   text-align: center;
+  margin-left: 3%;
 }
 
 @media (min-width: 992px) {
@@ -405,10 +418,16 @@ main .portfolioFullStack .proyectosFullStack {
   margin-top: 5%;
   display: grid;
   justify-content: space-evenly;
-  grid-template-areas: "card" "card" "card" "card" "card" "card" "card" "card";
+  grid-template-areas: "card"
+ "card"
+ "card"
+ "card"
+ "card"
+ "card"
+ "card"
+ "card";
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
 }
 
 main .portfolioFullStack .proyectosFullStack .card {
@@ -458,16 +477,16 @@ main .portfolioFullStack .proyectosFullStack .card .botonesFullStack .btn-primar
 @media (min-width: 992px) {
   main .portfolioFullStack .proyectosFullStack {
     display: grid;
-    grid-template-areas: "card card card" "card card card";
-    margin: 3% 0% 0% 0%;
+    grid-template-areas: "card card card"
+ "card card card";
   }
 }
 
 @media (min-width: 1200px) {
   main .portfolioFullStack .proyectosFullStack {
     display: grid;
-    grid-template-areas: "card card card card" "card card card card";
-    margin-left: -7.5%;
+    grid-template-areas: "card card card card"
+ "card card card card";
   }
 }
 

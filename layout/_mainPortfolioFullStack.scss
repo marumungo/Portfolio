@@ -11,6 +11,7 @@ main {
                 font-weight: 600;
                 color: $colorLetras;
                 text-align: center;
+                margin-left: 3%;
 
                 @include pantallaGrande {
                     text-align: left;
@@ -40,7 +41,6 @@ main {
 
             display: flex;
             flex-wrap: wrap;
-            align-items: flex-end;
 
             .card {
                 display: flex;
@@ -91,7 +91,6 @@ main {
                 grid-template-areas: 
                 "card card card"
                 "card card card";
-                margin: 3% 0% 0% 0%;
             }
 
             @include pantallaPanoramica {
@@ -99,7 +98,6 @@ main {
                 grid-template-areas: 
                 "card card card card"
                 "card card card card";
-                margin-left: -7.5%;
             }
         }
 
