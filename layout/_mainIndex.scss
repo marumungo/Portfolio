@@ -125,6 +125,39 @@ main {
         }
     }
 
+    .curriculumInicio {
+        .hoverTitulos {
+            h2 {
+                font-family: $tipografia;
+                font-weight: 600;
+                color: $colorLetras;
+                text-align: center;
+            }
+    
+            & :hover {
+                text-decoration: underline;
+                color: $hover;
+            }
+        }
+
+        p {
+            margin: 2% 0% 4% 0%;
+            font-family: $tipografia;
+            color: $colorLetras;
+            text-align: center;
+
+            .botonAqui {
+                font-family: $tipografia;
+                color: $hover;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
     .contactoInicio {
         .hoverTitulos {
             h2 {
