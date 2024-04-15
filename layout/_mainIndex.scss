@@ -126,6 +126,10 @@ main {
     }
 
     .curriculumInicio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         .hoverTitulos {
             h2 {
                 font-family: $tipografia;
@@ -140,8 +144,18 @@ main {
             }
         }
 
+        picture {
+            display: flex;
+            justify-content: center;
+
+            img {
+                margin: 2% 0% 2% 0%;
+                width: 25%;
+            }
+        }
+
         p {
-            margin: 2% 0% 4% 0%;
+            margin-bottom: 4%;
             font-family: $tipografia;
             color: $colorLetras;
             text-align: center;

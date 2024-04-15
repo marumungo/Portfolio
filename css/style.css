@@ -6,6 +6,7 @@
 */
 /* llamado a las tipografías */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap");
 /* tipografías
 font-family: 'Poppins', sans-serif;
 */
@@ -37,7 +38,7 @@ header .navbar-light {
 }
 header .navbar-light .navbar-brand {
   color: white;
-  font-family: NEONLEDLightRegular, NEON LED Light;
+  font-family: "Tilt Prism", sans-serif;
   font-size: 3rem;
 }
 header .navbar-light .navbar-nav .nav-link {
@@ -192,6 +193,11 @@ main .sobreMiInicio .textoYFoto picture img {
     line-height: 2.5rem;
   }
 }
+main .curriculumInicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 main .curriculumInicio .hoverTitulos h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -202,8 +208,16 @@ main .curriculumInicio .hoverTitulos :hover {
   text-decoration: underline;
   color: #a48181;
 }
+main .curriculumInicio picture {
+  display: flex;
+  justify-content: center;
+}
+main .curriculumInicio picture img {
+  margin: 2% 0% 2% 0%;
+  width: 25%;
+}
 main .curriculumInicio p {
-  margin: 2% 0% 4% 0%;
+  margin-bottom: 4%;
   font-family: "Poppins", sans-serif;
   color: #434343;
   text-align: center;
