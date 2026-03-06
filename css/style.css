@@ -2,6 +2,7 @@
 /* paleta de colores 
 #d9a2a2
 #a48181
+#7a6f6f
 #434343
 */
 /* llamado a las tipografías */
@@ -88,14 +89,14 @@ main {
 }
 main .portadaInicio {
   width: 100%;
-  padding: 15%;
+  padding: 13%;
   background-image: url("../images/inicio.jpg");
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 main .portadaInicio h1 {
-  margin: 0% 0% 5% 0%;
+  margin: 0% 0% 1% 0%;
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-weight: 550;
@@ -104,6 +105,13 @@ main .portadaInicio h1 {
 main .portadaInicio h1:hover {
   color: #a48181;
   transform: scale(1.1);
+}
+main .portadaInicio .portadaDescripcion {
+  margin: 0% 0% 2% 0%;
+  font-style: italic;
+}
+main .portadaInicio .portadaDescripcion .letrasPortada {
+  color: #a48181;
 }
 main .portadaInicio p {
   margin: 0% 15% 0% 15%;
@@ -149,7 +157,7 @@ main .sobreMiInicio .textoYFoto p {
   }
 }
 main .sobreMiInicio .textoYFoto .letrasSobreMi {
-  color: #d9a2a2;
+  color: #a48181;
 }
 main .sobreMiInicio .textoYFoto picture {
   margin: 3% 0% 3% 0%;
@@ -330,7 +338,7 @@ main .portfolioArquitectura .proyectosArquitectura .card .btn-primary:focus {
   border-color: none;
 }
 main .portfolioArquitectura .proyectosArquitectura .card .btn-primary:hover {
-  background-color: rgb(122, 111, 111) !important;
+  background-color: #7a6f6f !important;
 }
 @media (min-width: 992px) {
   main .portfolioArquitectura .proyectosArquitectura {
@@ -472,3 +480,5 @@ footer p {
 footer .designedBy :hover {
   color: #d9a2a2;
 }
+
+/*# sourceMappingURL=style.css.map */
