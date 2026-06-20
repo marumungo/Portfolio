@@ -1,0 +1,45 @@
+// BASE GLOBAL
+
+body {
+  font-family: $font-body;
+  font-weight: 300;
+  background: $color-bg;
+  color: $color-text;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+// SCROLLBAR PERSONALIZADA
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-divider;
+  border-radius: 2px;
+}
+
+// Selección de texto
+::selection {
+  background: $color-blue-300;
+  color: $color-blue-900;
+}
+
+// Reducción de movimiento para accesibilidad
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// UTILIDADES DE ACCESIBILIDAD
+.sr-only {
+  @include visually-hidden;
+}

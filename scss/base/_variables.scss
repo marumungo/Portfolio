@@ -1,0 +1,70 @@
+// VARIABLES GLOBALES
+
+// COLORES BASE
+$color-bg: #F5F2EE;             // Fondo general (beige cálido claro)
+$color-bg-soft: #E8E4DE;        // Fondo suave (cards, bordes de navbar mobile)
+$color-text: #2C2C2C;           // Texto principal (casi negro)
+$color-text-soft: #5A5A5A;      // Texto secundario
+$color-text-muted: #8A8A8A;     // Texto terciario / labels
+
+$color-border: #E8E4DE;         // Bordes sutiles
+$color-divider: #C4BEB6;        // Líneas divisorias decorativas
+
+// PALETA AZUL / CELESTE (color de marca)
+$color-blue-900: #0a293e;  // Azul muy oscuro (overlays, texto sobre selección)
+$color-blue-700: #3D5A6B;  // Azul acero — color principal de marca (logo, acentos)
+$color-blue-500: #6B8FA3;  // Celeste medio — hover, links, detalles
+$color-blue-300: #B8CDD6;  // Celeste claro — selección de texto, fondos suaves
+$color-blue-100: #DCE7EC;  // Celeste muy claro — fondos sutiles, bordes suaves
+
+
+// COLORES DE CATEGORÍA (cards de proyectos)
+// Tonos derivados de la paleta azul/celeste pero diferenciados entre sí
+$color-category-urbano: #415a77;         // Azul — oscuro, requiere texto blanco
+$color-category-institucional: #A9BCC4; // Crema — claro, texto oscuro
+$color-category-residencial: #e0e1dd;   // Gris celeste — claro, texto oscuro
+
+// Texto sobre cada categoría (según contraste)
+$color-category-urbano-text: #FFFFFF;
+$color-category-institucional-text: #3e3e3e;
+$color-category-residencial-text: $color-text-soft;
+
+// TIPOGRAFÍAS
+$font-heading: "Poppins", "DM Sans", system-ui, sans-serif; // Títulos y nombre
+$font-logo: "Poppins", "DM Sans", system-ui, sans-serif; // Logo navbar
+$font-body: "DM Sans", system-ui, sans-serif;
+
+// ESPACIADOS (escala reutilizable)
+$space-xs: 0.5rem;
+$space-sm: 0.75rem;
+$space-md: 1.25rem;
+$space-lg: 2rem;
+$space-xl: 3rem;
+$space-2xl: 4rem;
+
+// BORDES / RADIOS
+$radius-sm: 2px;
+
+// TRANSICIONES
+$ease-base: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: 0.25s ease;
+$transition-base: 0.35s $ease-base;
+$transition-slow: 0.65s ease;
+
+// Z-INDEX
+$z-navbar: 100;
+$z-loading-bar: 9999;
+
+// BREAKPOINTS
+$bp-desktop-lg: 1199px; // Tablet grande / desktop chico
+$bp-tablet: 991px;      // Tablet
+$bp-mobile: 767px;      // Móvil
+$bp-mobile-sm: 575px;   // Móvil pequeño
+
+// ALTURAS FIJAS REUTILIZADAS EN CÁLCULOS
+$navbar-width: 120px;
+$navbar-height: 72px;
+$footer-height: 60px;
+
+// Margen donde arranca el contenido
+$content-margin: 3rem;

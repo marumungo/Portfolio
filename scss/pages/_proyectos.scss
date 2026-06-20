@@ -1,0 +1,257 @@
+// PROYECTOS — LAYOUT
+
+#proyectos {
+  background: $color-bg;
+  padding-top: $navbar-height;
+}
+
+.projects__body {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: calc(100vh - #{$navbar-height} - #{$footer-height});
+
+  @include responsive(tablet) {
+    flex-direction: column;
+    min-height: auto;
+  }
+}
+
+// Sidebar fija con filtros
+.projects__sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 2rem 2.5rem 2rem 2.5rem;
+  border-right: 1px solid $color-border;
+  position: sticky;
+  top: $navbar-height;
+  height: calc(100vh - #{$navbar-height});
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  @include responsive(tablet) {
+    width: 100%;
+    position: static;
+    height: auto;
+    overflow: visible;
+    border-right: none;
+    border-bottom: 1px solid $color-border;
+    padding: 2rem 2rem 1.5rem;
+  }
+
+  @include responsive(mobile) {
+    padding: 1.75rem 1.5rem 1.25rem;
+  }
+}
+
+// Título "Proyectos" en la sidebar:
+// DM Sans en negrita con color acento — más sobrio y consistente
+.projects__sidebar-title {
+  font-family: $font-heading;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: $color-blue-700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.projects__sidebar-text {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: $color-text-soft;
+  margin-bottom: 1.5rem;
+}
+
+.projects__sidebar-label {
+  font-family: $font-body;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  margin-bottom: 0.5rem;
+}
+
+.projects__sidebar-filters {
+  display: flex;
+  flex-direction: column;
+
+  @include responsive(tablet) {
+    flex-direction: row;
+    gap: 0.6rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+}
+
+// Botones de filtro en sidebar
+.projects__sidebar-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid $color-border;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: $color-text-soft;
+  cursor: pointer;
+  transition: color 0.25s;
+  font-family: $font-body;
+  background: none;
+  text-align: left;
+  width: 100%;
+
+  &:first-of-type {
+    border-top: 1px solid $color-border;
+  }
+
+  &:hover {
+    color: $color-blue-700;
+
+    .filter-icon,
+    .filter-arrow {
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    color: $color-blue-700;
+    font-weight: 500;
+
+    .filter-icon,
+    .filter-arrow {
+      opacity: 1;
+    }
+
+    .filter-arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  // En mobile: pastillas horizontales en vez de lista vertical
+  @include responsive(tablet) {
+    width: auto;
+    flex-shrink: 0;
+    border: 1px solid $color-border;
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+
+    &:first-of-type {
+      border-top: 1px solid $color-border;
+    }
+
+    &.active {
+      border-color: $color-blue-700;
+      background: $color-blue-700;
+      color: #fff;
+
+      .filter-arrow { display: none; }
+    }
+  }
+}
+
+.filter-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.filter-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.55;
+  transition: opacity 0.25s;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+}
+
+.filter-arrow {
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  font-size: 0.65rem;
+  color: $color-blue-500;
+}
+
+// =============================================
+// PROYECTOS — GRILLA DE CARDS
+// =============================================
+.projects__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects__header-bar {
+  padding: 2rem 2rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include responsive(mobile) {
+    padding: 1.5rem 1rem 0.5rem;
+  }
+}
+
+.projects__count {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+// Grid de tarjetas de proyectos
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  padding: 0.5rem 2rem 3rem;
+
+  @include responsive(desktop-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive(tablet) {
+    padding: 0.5rem 1.5rem 2.5rem;
+  }
+
+  @include responsive(mobile) {
+    grid-template-columns: 1fr;
+    padding: 0.5rem 1rem 2rem;
+  }
+}
+
+// Mensaje de estado vacío
+.projects__empty {
+  padding: 5rem 2rem;
+  text-align: center;
+  color: $color-text-muted;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}

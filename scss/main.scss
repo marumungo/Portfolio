@@ -1,0 +1,20 @@
+// Main scss
+
+// 1. Base
+@import "base/variables";
+@import "base/mixins";
+@import "base/reset";
+@import "base/base";
+
+// 2. Layout
+@import "layout/navbar";
+@import "layout/footer";
+
+// 3. Componentes
+@import "components/loading-bar";
+@import "components/page-sections";
+@import "components/card";
+
+// 4. Páginas
+@import "pages/home";
+@import "pages/proyectos";

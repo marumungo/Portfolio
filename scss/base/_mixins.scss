@@ -1,0 +1,35 @@
+// MIXINS
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == desktop-lg {
+    @media (max-width: $bp-desktop-lg) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $bp-tablet) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (max-width: $bp-mobile) {
+      @content;
+    }
+  } @else if $breakpoint == mobile-sm {
+    @media (max-width: $bp-mobile-sm) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` no existe en el mixin responsive().";
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

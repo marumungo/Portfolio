@@ -1,0 +1,208 @@
+// NAVBAR
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $navbar-height;
+  z-index: $z-navbar;
+  background: $color-bg;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+
+  // Navbar con sombra al hacer scroll
+  &.scrolled {
+    border-bottom-color: $color-border;
+    background: rgba(245, 242, 238, 0.96);
+    backdrop-filter: blur(8px);
+  }
+}
+
+// Marca: logo "MM." + nombre y rol
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  height: $navbar-height;
+  padding-left: 2.5rem;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+// "MM." — logo geométrico, redondeado
+.navbar__logo {
+  font-family: $font-logo;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: $color-blue-700;
+  line-height: 1;
+}
+
+.navbar__brand-text {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  line-height: 1.2;
+}
+
+.navbar__brand-name {
+  font-family: $font-logo;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-blue-700;
+}
+
+.navbar__brand-role {
+  font-family: $font-body;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+// Links de navegación (desktop) — alineados al margen del contenido
+.navbar__links {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-right: $content-margin;
+  gap: 3rem;
+
+  @include responsive(tablet) {
+    display: none;
+  }
+}
+
+.navbar__link {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-text;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color $transition-fast;
+
+  // Subrayado animado
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $color-blue-500;
+    transition: width 0.3s $ease-base;
+  }
+
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    color: $color-blue-500;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+
+  &.active::after {
+    background: $color-blue-700;
+  }
+}
+
+// Botón hamburguesa (sólo móvil)
+.navbar__hamburger {
+  display: none;
+  margin-left: auto;
+  margin-right: $content-margin;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+
+  @include responsive(tablet) {
+    display: flex;
+  }
+
+  span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: $color-text;
+    transition: all $transition-base;
+  }
+
+  // Animación X al abrir menú
+  &.open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+  &.open span:nth-child(2) {
+    opacity: 0;
+  }
+  &.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+}
+
+// Menú móvil desplegable
+.navbar__mobile {
+  display: none;
+  position: fixed;
+  top: $navbar-height;
+  left: 0;
+  right: 0;
+  background: $color-bg;
+  border-bottom: 1px solid $color-border;
+  padding: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: $z-navbar - 1;
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s;
+
+  @include responsive(tablet) {
+    display: flex;
+  }
+
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+
+  a {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-text;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

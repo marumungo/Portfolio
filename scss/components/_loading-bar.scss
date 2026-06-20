@@ -1,0 +1,17 @@
+// BARRA DE CARGA
+
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: $color-blue-500;
+  z-index: $z-loading-bar;
+  width: 0;
+  transition: width 0.4s ease, opacity 0.3s ease;
+
+  &.done {
+    width: 100%;
+    opacity: 0;
+  }
+}
