@@ -106,7 +106,7 @@
 // Contenido de texto (nombre + sobre mí + conectemos)
 .home__content {
   flex: 1;
-  padding: 4rem 4rem 4rem 5rem;
+  padding: 5%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -117,17 +117,11 @@
   z-index: 1;
 
   @include responsive(desktop-lg) {
-    padding: 3rem 2.5rem 2rem 2rem;
-    max-width: 50%;
+    max-width: 55%;
   }
 
   @include responsive(tablet) {
     max-width: 100%;
-    padding: 2.5rem 2rem;
-  }
-
-  @include responsive(mobile) {
-    padding: 2rem 1.5rem;
   }
 }
 
@@ -197,17 +191,16 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 3rem;
+  gap: 5%;
   width: 100%;
 
   // Reducir gap entre cita y contacto en tablet grande
   @include responsive(desktop-lg) {
-    gap: 2rem;
+    gap: 15%;
   }
 
   @include responsive(tablet) {
     flex-direction: column;
-    gap: 1.75rem;
   }
 }
 
@@ -223,6 +216,11 @@
   @include responsive(tablet) {
     flex: none;
     width: 100%;
+    padding: 0 0 5% 0;
+  }
+
+  @include responsive(mobile) {
+    padding: 0 0 7% 0;
   }
 }
 
@@ -261,11 +259,15 @@
 
   p {
     font-family: $font-heading;
-    font-size: 1rem;
+    font-size: 95%;
     font-weight: 1;
     font-style: italic;
     line-height: 2.1;
     color: $color-text-soft;
+
+    @include responsive(desktop-md) {
+      font-size: 90%;
+    }
   }
 }
 

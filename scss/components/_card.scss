@@ -135,7 +135,7 @@
   .card__title,
   .card__desc { color: $color-category-urbano-text; }
 
-  .card__title-accent { color: #fff; }
+  .card__title-accent { color: $color-category-urbano-text; }
 
   .card__tag {
     color: $color-category-urbano-text;

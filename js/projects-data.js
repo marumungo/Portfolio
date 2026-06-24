@@ -2,7 +2,7 @@
 
 const projects = [
   {
-    id: 16,
+    id: 12,
     title: 'Caniles Parque Thays',
     category: 'urbano',
     tags: ['Proyecto y dirección de obra'],
@@ -12,7 +12,7 @@ const projects = [
     imageAlt: 'Caniles Parque Thays'
   },
   {
-    id: 15,
+    id: 11,
     title: 'Estación deportiva Plaza Rubén Darío',
     category: 'urbano',
     tags: ['Proyecto y dirección de obra'],
@@ -22,7 +22,7 @@ const projects = [
     imageAlt: 'Estación deportiva Plaza Rubén Darío'
   },
   {
-    id: 14,
+    id: 10,
     title: 'Puesta en valor Plaza Borges',
     category: 'urbano',
     tags: ['Proyecto y dirección de obra'],
@@ -32,7 +32,7 @@ const projects = [
     imageAlt: 'Puesta en valor Plaza Borges'
   },
   {
-    id: 13,
+    id: 9,
     title: 'Sector deportivo Plaza Houssay',
     category: 'urbano',
     tags: ['Proyecto y dirección de obra'],
@@ -42,7 +42,7 @@ const projects = [
     imageAlt: 'Sector deportivo Plaza Houssay'
   },
   {
-    id: 12,
+    id: 8,
     title: 'Centro de formación científica',
     category: 'institucional',
     tags: ['Proyecto universitario'],
@@ -52,7 +52,7 @@ const projects = [
     imageAlt: 'Centro de formación científica'
   },
   {
-    id: 11,
+    id: 7,
     title: 'Parque agroproductivo',
     category: 'urbano',
     tags: ['Proyecto universitario'],
@@ -62,7 +62,7 @@ const projects = [
     imageAlt: 'Parque agroproductivo'
   },
   {
-    id: 10,
+    id: 6,
     title: 'Condensador urbano',
     category: 'urbano',
     tags: ['Proyecto universitario'],
@@ -72,7 +72,7 @@ const projects = [
     imageAlt: 'Condensador urbano'
   },
   {
-    id: 9,
+    id: 5,
     title: 'Centro integral',
     category: 'institucional',
     tags: ['Proyecto universitario'],
@@ -82,7 +82,7 @@ const projects = [
     imageAlt: 'Centro integral'
   },
   {
-    id: 8,
+    id: 4,
     title: 'Diseño de interiores PH',
     category: 'residencial',
     tags: ['Proyecto y contacto con proveedores'],
@@ -92,7 +92,7 @@ const projects = [
     imageAlt: 'Diseño de interiores PH'
   },
   {
-    id: 7,
+    id: 3,
     title: 'Bodega',
     category: 'institucional',
     tags: ['Proyecto universitario'],
@@ -102,7 +102,7 @@ const projects = [
     imageAlt: 'Bodega'
   },
   {
-    id: 6,
+    id: 2,
     title: 'Hotel museo',
     category: 'institucional',
     tags: ['Proyecto universitario'],
@@ -112,7 +112,7 @@ const projects = [
     imageAlt: 'Hotel museo'
   },
   {
-    id: 5,
+    id: 1,
     title: 'Edificio el Oasis',
     category: 'residencial',
     tags: ['Proyecto universitario'],
@@ -121,46 +121,6 @@ const projects = [
     image: 'images/projects/proyecto-el-oasis/preview.jpg',
     imageAlt: 'Edificio el Oasis'
   },
-  {
-    id: 4,
-    title: 'Conjunto de viviendas',
-    category: 'residencial',
-    tags: ['Proyecto universitario'],
-    description: 'Células en conjunto, ubicadas en San Isidro (proyecto propio). Proyecto universitario para Diseño II (2022).',
-    behanceUrl: 'https://www.behance.net/gallery/150784327/Conjunto-de-viviendas-San-Isidro',
-    image: 'images/projects/proyecto-conjunto-viviendas/preview.jpg',
-    imageAlt: 'Conjunto de viviendas'
-  },
-  {
-    id: 3,
-    title: 'Célula vivienda',
-    category: 'residencial',
-    tags: ['Proyecto universitario'],
-    description: 'Vivienda para dos personas, ubicada en terreno rural (proyecto propio). Proyecto universitario para Diseño II (2022).',
-    behanceUrl: 'https://www.behance.net/gallery/150783717/Clula-vivienda-Terreno-rural',
-    image: 'images/projects/proyecto-celula-vivienda/preview.jpg',
-    imageAlt: 'Célula vivienda'
-  },
-  {
-    id: 2,
-    title: 'Residencia artes y oficios',
-    category: 'institucional',
-    tags: ['Proyecto universitario'],
-    description: 'Residencia con talleres de alfarería, ubicado en Buenos Aires (proyecto propio). Proyecto universitario para Diseño I (2021).',
-    behanceUrl: 'https://www.behance.net/gallery/150782127/Residencia-artes-y-oficios-Buenos-Aires',
-    image: 'images/projects/proyecto-residencia-artes-oficios/preview.jpg',
-    imageAlt: 'Residencia artes y oficios'
-  },
-  {
-    id: 1,
-    title: 'Hostel',
-    category: 'institucional',
-    tags: ['Proyecto universitario'],
-    description: 'Hostel ubicado en Laguna Verde, Chile (proyecto propio). Proyecto universitario (2021).',
-    behanceUrl: 'https://www.behance.net/gallery/150781673/Proyecto-Hostel-Laguna-Verde-Chile',
-    image: 'images/projects/proyecto-hostel/preview.jpg',
-    imageAlt: 'Hostel'
-  }
 ];
 
 // Exportar para uso en módulos (Node.js / bundlers)

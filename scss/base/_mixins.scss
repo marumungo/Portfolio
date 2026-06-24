@@ -1,7 +1,11 @@
 // MIXINS
 
 @mixin responsive($breakpoint) {
-  @if $breakpoint == desktop-lg {
+  @if $breakpoint == desktop-md {
+    @media (max-width: $bp-desktop-md) {
+      @content;
+    }
+  } @else if $breakpoint == desktop-lg {
     @media (max-width: $bp-desktop-lg) {
       @content;
     }
