@@ -63,13 +63,13 @@ const projects = [
   },
   {
     id: 6,
-    title: 'Condensador urbano',
+    title: 'Centro multiprogramático',
     category: 'urbano',
     tags: ['Proyecto universitario'],
     description: 'Centro multiprogramático ubicado en Punta Lara (proyecto propio). Proyecto universitario para Diseño IV (2024).',
     behanceUrl: 'https://www.behance.net/gallery/219425721/Condensador-urbano-Punta-Lara',
     image: 'images/projects/proyecto-condensador-urbano/preview.jpg',
-    imageAlt: 'Condensador urbano'
+    imageAlt: 'Centro multiprogramático'
   },
   {
     id: 5,
@@ -93,33 +93,33 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Bodega',
+    title: 'Complejo enológico',
     category: 'institucional',
     tags: ['Proyecto universitario'],
     description: 'Bodega implantada sobre la montaña, ubicada en Cafayate, Salta (proyecto propio). Proyecto universitario para Diseño III (2023).',
     behanceUrl: 'https://www.behance.net/gallery/192672761/Bodega-Cafayate-Salta',
     image: 'images/projects/proyecto-bodega/preview.jpg',
-    imageAlt: 'Bodega'
+    imageAlt: 'Complejo enológico'
   },
   {
     id: 2,
-    title: 'Hotel museo',
+    title: 'Complejo hotelero y cultural',
     category: 'institucional',
     tags: ['Proyecto universitario'],
     description: 'Hotel con exposiciones de artista local, ubicado en Cafayate, Salta (proyecto propio). Proyecto universitario para Diseño III (2023).',
     behanceUrl: 'https://www.behance.net/gallery/192670781/Hotel-Museo-Cafayate-Salta',
     image: 'images/projects/proyecto-hotel-museo/preview.jpg',
-    imageAlt: 'Hotel museo'
+    imageAlt: 'Complejo hotelero y cultural'
   },
   {
     id: 1,
-    title: 'Edificio el Oasis',
+    title: 'Edificio residencial Oasis urbano',
     category: 'residencial',
     tags: ['Proyecto universitario'],
     description: 'Edificio de locales, oficinas y viviendas, ubicado en Montserrat (proyecto propio). Proyecto universitario para Diseño II (2022).',
     behanceUrl: 'https://www.behance.net/gallery/158943687/Edificio-El-Oasis-Montserrat',
     image: 'images/projects/proyecto-el-oasis/preview.jpg',
-    imageAlt: 'Edificio el Oasis'
+    imageAlt: 'Edificio residencial Oasis urbano'
   },
 ];
 
