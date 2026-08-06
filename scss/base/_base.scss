@@ -43,3 +43,11 @@ body {
 .sr-only {
   @include visually-hidden;
 }
+
+// Foco visible consistente para navegación por teclado
+a, button, [role="button"], input, textarea, select {
+  &:focus-visible {
+    outline: 2px solid $color-blue-500;
+    outline-offset: 2px;
+  }
+}

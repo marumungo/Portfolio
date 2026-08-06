@@ -1,0 +1,85 @@
+// CURSOR PERSONALIZADO
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 16000; // por encima del visor de galería (.lightbox, 15000) para que no quede tapado
+  opacity: 0;
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.cursor--dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: $color-blue-700;
+  transition: opacity 0.2s ease;
+}
+
+.cursor--ring {
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border: 1px solid $color-blue-500;
+  transition:
+    opacity 0.3s ease,
+    width 0.25s $ease-base,
+    height 0.25s $ease-base,
+    margin 0.25s $ease-base,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+html.cursor-active .cursor {
+  opacity: 1;
+}
+
+html.cursor-hover .cursor--ring {
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  background: rgba($color-blue-700, 0.06);
+  border-color: $color-blue-700;
+}
+
+html.cursor-hover .cursor--dot {
+  opacity: 0;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+// Sobre fondos oscuros (visor de galería, footer, cards al hacer hover), el cursor pasa a blanco para no perderse
+html.lightbox-open .cursor--dot,
+html.cursor-light .cursor--dot {
+  background: #fff;
+}
+
+html.lightbox-open .cursor--ring,
+html.cursor-light .cursor--ring {
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+html.lightbox-open.cursor-hover .cursor--ring,
+html.cursor-light.cursor-hover .cursor--ring {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor--ring {
+    transition: opacity 0.3s ease;
+  }
+}

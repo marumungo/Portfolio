@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio de Mariana Mungo, arquitecta graduada de FADU-UBA.">
+  <meta name="description" content="Portfolio de Mariana Mungo, arquitecta graduada de FADU-UBA. Proyectos de espacio público, dirección de obra e intervenciones urbanas, residenciales e institucionales.">
   <meta name="author" content="Mariana Mungo">
-  <title>Mariana Mungo - Portfolio</title>
+  <title>Mariana Mungo - Arquitecta</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mariana Mungo - Arquitecta">
+  <meta property="og:description" content="Portfolio de Mariana Mungo, arquitecta graduada de FADU-UBA. Proyectos de espacio público, dirección de obra e intervenciones urbanas, residenciales e institucionales.">
+  <meta property="og:image" content="images/foto.jpeg">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mariana Mungo - Arquitecta">
+  <meta name="twitter:description" content="Portfolio de Mariana Mungo, arquitecta graduada de FADU-UBA.">
+  <meta name="twitter:image" content="images/foto.jpeg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#F5F2EE">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,12 +39,21 @@
 
 <body>
 
-  <!-- Barra de carga superior -->
-  <div class="loading-bar" id="loadingBar"></div>
+  <!-- Pantalla de carga inicial -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__mark">
+      <span class="loader__letter">M</span><span class="loader__letter">M</span><span class="loader__dot">.</span>
+    </div>
+    <div class="loader__bar"><div class="loader__bar-fill" id="loaderFill"></div></div>
+  </div>
+
+  <!-- Cursor personalizado (desktop) -->
+  <div class="cursor cursor--dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
 
   <!-- Barra de navegación principal -->
   <nav class="navbar" role="navigation" aria-label="Navegación principal">
-    <a class="navbar__brand" href="#home" data-page="home" aria-label="Inicio — Mariana Mungo">
+    <a class="navbar__brand" href="#home" data-page="home" aria-label="Inicio - Mariana Mungo">
       <span class="navbar__logo">MM.</span>
       <span class="navbar__brand-text">
         <span class="navbar__brand-name">Mariana Mungo</span>
@@ -34,8 +61,13 @@
       </span>
     </a>
     <div class="navbar__links">
-      <button class="navbar__link active" data-page="home" aria-current="page">Home</button>
-      <button class="navbar__link" data-page="proyectos">Proyectos</button>
+      <button class="navbar__link active" data-page="home" aria-current="page" data-i18n="nav_home">Home</button>
+      <button class="navbar__link" data-page="proyectos" data-i18n="nav_projects">Proyectos</button>
+      <div class="navbar__lang" role="group" aria-label="Idioma / Language">
+        <button class="navbar__lang-option active" type="button" data-lang-set="es">ES</button>
+        <span class="navbar__lang-sep">/</span>
+        <button class="navbar__lang-option" type="button" data-lang-set="en">EN</button>
+      </div>
     </div>
     <!-- Botón hamburguesa visible solo en móvil -->
     <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -45,12 +77,19 @@
 
   <!-- Menú desplegable para dispositivos móviles -->
   <nav class="navbar__mobile" aria-label="Menú móvil">
-    <a data-page="home" class="active">Home</a>
-    <a data-page="proyectos">Proyectos</a>
+    <a data-page="home" class="active" data-i18n="nav_home">Home</a>
+    <a data-page="proyectos" data-i18n="nav_projects">Proyectos</a>
+    <div class="navbar__lang navbar__lang--mobile" role="group" aria-label="Idioma / Language">
+      <button class="navbar__lang-option active" type="button" data-lang-set="es">ES</button>
+      <span class="navbar__lang-sep">/</span>
+      <button class="navbar__lang-option" type="button" data-lang-set="en">EN</button>
+    </div>
   </nav>
 
   <!-- SECCIÓN: HOME -->
   <section id="home" class="page-section active" aria-label="Inicio">
+
+    <div class="home__hero">
 
     <!-- Imagen decorativa margen izquierdo (oculta en tablets y móviles) -->
     <div class="home__deco-left" aria-hidden="true">
@@ -64,7 +103,7 @@
 
     <!-- Foto de perfil -->
     <div class="home__photo">
-      <img src="images/foto.jpeg" alt="Mariana Mungo — Arquitecta y Urbanista" loading="lazy">
+      <img src="images/foto.jpeg" alt="Mariana Mungo - Arquitecta y Urbanista" loading="lazy">
     </div>
 
     <!-- Contenido principal: "Sobre mí" y "Conectemos" en el mismo contenedor -->
@@ -72,8 +111,8 @@
 
       <!-- Identificación / encabezado -->
       <p class="home__eyebrow fade-up">
-        <span>Arquitecta</span>
-        <span>UBA</span>
+        <span data-i18n="home_eyebrow_1">Arquitecta</span>
+        <span data-i18n="home_eyebrow_2">UBA</span>
       </p>
       <h1 class="home__name fade-up">Mariana<br><span class="home__name-accent">Mungo</span></h1>
       <div class="home__divider fade-up"></div>
@@ -81,13 +120,13 @@
       <div class="home__lower">
         <!-- Bio: ocupa todo el ancho disponible -->
         <div class="home__about fade-up">
-          <p class="home__section-label">Sobre mí</p>
-          <p class="home__bio">
-            Arquitecta graduada de FADU-UBA, con experiencia en intervenciones de espacio público y dirección de obra. 
-            Me apasiona transformar ideas en espacios reales y participar en el proceso completo de un proyecto, 
-            desde el diseño hasta su materialización, combinando una mirada técnica y creativa. 
-            Me interesa especialmente el desarrollo inmobiliario y el potencial de la arquitectura 
-            para transformar el entorno cotidiano de las personas. Actualmente, me encuentro incorporando la metodología BIM 
+          <p class="home__section-label" data-i18n="home_about_label">Sobre mí</p>
+          <p class="home__bio" data-i18n="home_bio">
+            Arquitecta graduada de FADU-UBA, con experiencia en intervenciones de espacio público y dirección de obra.
+            Me apasiona transformar ideas en espacios reales y participar en el proceso completo de un proyecto,
+            desde el diseño hasta su materialización, combinando una mirada técnica y creativa.
+            Me interesa especialmente el desarrollo inmobiliario y el potencial de la arquitectura
+            para transformar el entorno cotidiano de las personas. Actualmente, me encuentro incorporando la metodología BIM
             como parte de una práctica profesional cada vez más integrada y eficiente.
           </p>
         </div>
@@ -97,7 +136,7 @@
         <div class="home__lower-row fade-up">
 
           <div class= "home__contact home__contact--bottom">
-            <p class="home__contact-title">Conectemos</p>
+            <p class="home__contact-title" data-i18n="home_contact_title">Conectemos</p>
             <div class="home__contact-links">
               <a href="https://www.linkedin.com/in/marumungo" target="_blank" rel="noopener" class="home__contact-link" aria-label="LinkedIn">
                 <span class="icon-wrap">
@@ -121,17 +160,34 @@
                 <span class="icon-wrap">
                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 4h5v5h6v11H6V4zm2 8h8v1H8v-1zm0 2h8v1H8v-1zm0 2h5v1H8v-1z"/></svg>
                 </span>
-                Curriculum Vitae
+                <span data-i18n="home_cv_label">Curriculum Vitae</span>
               </a>
             </div>
           </div>
 
           <blockquote class="home__quote">
-            <p>
+            <p data-i18n="home_quote">
               "Diseñar espacios es interpretar necesidades y descubrir oportunidades."
             </p>
           </blockquote>
         </div>
+      </div>
+    </div>
+
+    </div><!-- /.home__hero -->
+
+    <!-- Proyectos destacados -->
+    <div class="home__featured">
+      <div class="home__featured-head fade-up">
+        <p class="home__section-label" data-i18n="home_featured_label">Proyectos destacados</p>
+        <button class="home__featured-all" type="button" data-nav="proyectos">
+          <span data-i18n="home_featured_all">Ver todos</span> <span aria-hidden="true">→</span>
+        </button>
+      </div>
+      <div class="home__featured-viewport">
+        <button class="home__featured-arrow home__featured-arrow--prev" type="button" aria-label="Anterior">←</button>
+        <div class="home__featured-track"><!-- Renderizado por js/render-projects.js --></div>
+        <button class="home__featured-arrow home__featured-arrow--next" type="button" aria-label="Siguiente">→</button>
       </div>
     </div>
 
@@ -144,10 +200,10 @@
 
       <!-- Sidebar con filtros por categoría (oculto en tablets y móviles) -->
       <aside class="projects__sidebar" aria-label="Categorías">
-        <h2 class="projects__sidebar-title">Proyectos</h2>
-        <p class="projects__sidebar-text">Una selección de mis proyectos que abordan distintas escalas, contextos y necesidades.</p>
+        <h2 class="projects__sidebar-title" data-i18n="projects_sidebar_title">Proyectos</h2>
+        <p class="projects__sidebar-text" data-i18n="projects_sidebar_text">Una selección de mis proyectos que abordan distintas escalas, contextos y necesidades.</p>
 
-        <p class="projects__sidebar-label">Categorías</p>
+        <p class="projects__sidebar-label" data-i18n="projects_sidebar_label">Categorías</p>
         <div class="projects__sidebar-filters" role="group">
 
           <!-- Filtro: Todos -->
@@ -156,7 +212,7 @@
               <span class="filter-icon">
                 <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
               </span>
-              Todos
+              <span data-i18n="filter_all">Todos</span>
             </span>
             <span class="filter-arrow">→</span>
           </button>
@@ -167,7 +223,7 @@
               <span class="filter-icon">
                 <svg viewBox="0 0 24 24"><rect x="2" y="10" width="6" height="12"/><rect x="9" y="6" width="6" height="16"/><rect x="16" y="3" width="6" height="19"/><line x1="2" y1="22" x2="22" y2="22"/></svg>
               </span>
-              Urbano
+              <span data-i18n="filter_urbano">Urbano</span>
             </span>
             <span class="filter-arrow">→</span>
           </button>
@@ -178,7 +234,7 @@
               <span class="filter-icon">
                 <svg viewBox="0 0 24 24"><path d="M3 12L12 4l9 8"/><path d="M5 10v10h4v-6h6v6h4V10"/></svg>
               </span>
-              Residencial
+              <span data-i18n="filter_residencial">Residencial</span>
             </span>
             <span class="filter-arrow">→</span>
           </button>
@@ -189,7 +245,7 @@
               <span class="filter-icon">
                 <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="12"/><path d="M3 10L12 3l9 7"/><line x1="8" y1="22" x2="8" y2="15"/><line x1="16" y1="22" x2="16" y2="15"/><rect x="10" y="15" width="4" height="7"/></svg>
               </span>
-              Institucional
+              <span data-i18n="filter_institucional">Institucional</span>
             </span>
             <span class="filter-arrow">→</span>
           </button>
@@ -200,223 +256,52 @@
       <!-- Grilla de proyectos -->
       <main class="projects__main">
         <div class="projects__header-bar">
-          <p class="projects__count" aria-live="polite">16 proyectos</p>
+          <p class="projects__count" aria-live="polite"></p>
         </div>
 
-        <div class="projects__grid" role="list">
-
-          <!-- Proyecto 12: Caniles Parque Thays (el más reciente) -->
-          <article class="card card--urbano fade-up" data-category="urbano" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/parque-thays/preview.jpg" alt="Caniles Parque Thays" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/247725239/Renovacion-caniles-Parque-Thays-%28CABA%29" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">12</p>
-              <h3 class="card__title"><span class="card__title-accent">Renovación caniles</span> -<br>Parque Thays, CABA</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto y dirección de obra</span></div>
-              <p class="card__desc">Puesta en valor y ampliación de canil, en Parque Thays (proyecto y dirección de obra). Proyecto real (2026).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 11: Estación deportiva Plaza Rubén Darío -->
-          <article class="card card--urbano fade-up" data-category="urbano" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/plaza-ruben-dario/preview.jpg" alt="Estación deportiva Plaza Rubén Darío" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/247724323/Estacion-deportiva-Rubn-Dario-%28CABA%29" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">11</p>
-              <h3 class="card__title"><span class="card__title-accent">Estación deportiva</span> -<br>Plaza Rubén Darío, CABA</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto y dirección de obra</span></div>
-              <p class="card__desc">Estación deportiva para adultos mayores en Plaza Rubén Darío (proyecto y dirección de obra). Proyecto real (2026).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 10: Puesta en valor Plaza Borges -->
-          <article class="card card--urbano fade-up" data-category="urbano" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/plaza-borges/preview.jpg" alt="Puesta en valor Plaza Borges" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/247723131/Puesta-en-valor-Plaza-Jorge-L-Borges-%28CABA%29" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">10</p>
-              <h3 class="card__title"><span class="card__title-accent">Puesta en valor</span> -<br>Plaza Borges, CABA</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto y dirección de obra</span></div>
-              <p class="card__desc">Puesta en valor cultural en Plaza Jorge L. Borges (proyecto y dirección de obra). Proyecto real (2025/2026).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 09: Sector deportivo Plaza Houssay -->
-          <article class="card card--urbano fade-up" data-category="urbano" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/plaza-houssay/preview.jpg" alt="Sector deportivo Plaza Houssay" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/247721249/Sector-deportivo-Plaza-Houssay-%28CABA%29" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">09</p>
-              <h3 class="card__title"><span class="card__title-accent">Sector deportivo</span> -<br>Plaza Houssay, CABA</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto y dirección de obra</span></div>
-              <p class="card__desc">Intervención sector deportivo ubicado en Plaza Houssay (proyecto y dirección de obra). Proyecto real (2025).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 08: Centro de formación científica -->
-          <article class="card card--institucional fade-up" data-category="institucional" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-centro-cientifico/preview.jpg" alt="Centro de formación científica" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/240788631/Centro-de-formacion-cientifica-Bahia-Blanca" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">08</p>
-              <h3 class="card__title"><span class="card__title-accent">Centro científico</span> -<br>Bahía Blanca, Bs. As.</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto universitario</span></div>
-              <p class="card__desc">Centro científico ubicado en Bahía Blanca (proyecto propio). Proyecto para Proyecto Arquitectónico (2025).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 07: Parque agroproductivo -->
-          <article class="card card--urbano fade-up" data-category="urbano" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-parque-agroproductivo/preview.jpg" alt="Parque agroproductivo" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/240786641/Parque-agroproductivo-Viedma" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">07</p>
-              <h3 class="card__title"><span class="card__title-accent">Parque agroproductivo</span> -<br>Viedma, Bs. As.</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto universitario</span></div>
-              <p class="card__desc">Parque agroproductivo ubicado en Viedma (proyecto propio). Proyecto para Proyecto Urbano (2025).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 06: Centro multiprogramático -->
-          <article class="card card--institucional fade-up" data-category="institucional" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-condensador-urbano/preview.jpg" alt="Centro multiprogramático" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/219425721/Condensador-urbano-Punta-Lara" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">06</p>
-              <h3 class="card__title"><span class="card__title-accent">Centro multiprogramático</span> -<br>Punta Lara, Bs. As.</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto universitario</span></div>
-              <p class="card__desc">Centro multiprogramático (deportes, hotel, transporte y oficinas) ubicado en Punta Lara (proyecto propio). Proyecto para Diseño IV (2024).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 05: Centro integral -->
-          <article class="card card--institucional fade-up" data-category="institucional" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-centro-integral/preview.jpg" alt="Centro integral" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/206097727/Centro-integral-Isla-Martin-Garcia" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">05</p>
-              <h3 class="card__title"><span class="card__title-accent">Centro integral</span> -<br>Isla Martín García, Arg.</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto universitario</span></div>
-              <p class="card__desc">Complejo multidisciplinario ubicado en la Isla Martín García (proyecto propio). Proyecto para Diseño IV (2024).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 04: Diseño de interiores PH -->
-          <article class="card card--residencial fade-up" data-category="residencial" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-diseño-ph/preview.jpg" alt="Diseño de interiores PH" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/196214019/Diseno-Interiores-PH-%28CABA%29" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">04</p>
-              <h3 class="card__title"><span class="card__title-accent">Diseño de interiores PH</span> -<br>Villa Crespo, CABA</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto y contacto con proveedores</span></div>
-              <p class="card__desc">Diseño de interiores para PH ubicado en Villa Crespo, CABA (proyecto propio). Proyecto y contacto con proveedores (2024).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 03: Complejo enológico -->
-          <article class="card card--institucional fade-up" data-category="institucional" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-bodega/preview.jpg" alt="Complejo enológico" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/192672761/Bodega-Cafayate-Salta" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">03</p>
-              <h3 class="card__title"><span class="card__title-accent">Complejo enológico</span> -<br>Cafayate, Salta</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto universitario</span></div>
-              <p class="card__desc">Bodega implantada sobre la montaña, ubicada en Cafayate, Salta (proyecto propio). Proyecto para Diseño III (2023).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 02: Complejo hotelero y cultural -->
-          <article class="card card--institucional fade-up" data-category="institucional" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-hotel-museo/preview.jpg" alt="Complejo hotelero y cultural" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/192670781/Hotel-Museo-Cafayate-Salta" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">02</p>
-              <h3 class="card__title"><span class="card__title-accent">Complejo hotelero y cultural</span> -<br>Cafayate, Salta</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto universitario</span></div>
-              <p class="card__desc">Hotel con exposiciones de artista local, ubicado en Cafayate, Salta (proyecto propio). Proyecto para Diseño III (2023).</p>
-            </div>
-          </article>
-
-          <!-- Proyecto 01: Edificio residencial Oasis urbano -->
-          <article class="card card--residencial fade-up" data-category="residencial" role="listitem">
-            <div class="card__image-wrap">
-              <img class="card__image" src="images/projects/proyecto-el-oasis/preview.jpg" alt="Edificio residencial Oasis urbano" loading="lazy">
-              <div class="card__overlay">
-                <a href="https://www.behance.net/gallery/158943687/Edificio-El-Oasis-Montserrat" target="_blank" rel="noopener" class="overlay-btn">Ver en Behance ↗</a>
-              </div>
-            </div>
-            <div class="card__body">
-              <p class="card__number">01</p>
-              <h3 class="card__title"><span class="card__title-accent">Edificio residencial Oasis urbano</span> -<br>Montserrat, CABA</h3>
-              <div class="card__tags"><span class="card__tag">Proyecto universitario</span></div>
-              <p class="card__desc">Edificio de locales, oficinas y viviendas, ubicado en Montserrat (proyecto propio). Proyecto para Diseño II (2022).</p>
-            </div>
-          </article>
-        </div>
+        <!-- Grilla de proyectos: renderizada por js/render-projects.js desde js/projects-data.js -->
+        <div class="projects__grid" role="list"></div>
 
         <!-- Mensaje cuando no hay proyectos en la categoría seleccionada -->
-        <p class="projects__empty" aria-live="polite">No hay proyectos en esta categoría todavía.</p>
+        <p class="projects__empty" aria-live="polite" data-i18n="projects_empty">No hay proyectos en esta categoría todavía.</p>
 
       </main>
     </div>
 
   </section>
 
+  <!-- SECCIÓN: DETALLE DE PROYECTO -->
+  <section id="proyecto-detalle" class="page-section" aria-label="Detalle de proyecto">
+    <div class="proyecto-detalle__body" id="proyectoDetalleBody">
+      <!-- Contenido renderizado por js/render-projects.js -->
+    </div>
+  </section>
+
+  <!-- Visor de galería a pantalla completa -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Cerrar visor">✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Imagen anterior">←</button>
+    <img class="lightbox__image" id="lightboxImage" src="" alt="">
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Imagen siguiente">→</button>
+    <p class="lightbox__count" id="lightboxCount"></p>
+  </div>
+
   <!-- Pie de página -->
   <footer class="site-footer" role="contentinfo">
-    <p class="site-footer__copy">© <span id="year"></span> Mariana Mungo — Todos los derechos reservados.</p>
-    <p class="site-footer__tagline">Espacios diseñados para ser habitados</p>
+    <p class="site-footer__copy" data-i18n-footer-copy>© <span id="year"></span> Mariana Mungo - Todos los derechos reservados.</p>
+    <p class="site-footer__tagline" data-i18n="footer_tagline">Espacios diseñados para ser habitados</p>
   </footer>
 
   <!-- Scripts -->
   <script src="utilities/utils.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/projects-data.js"></script>
+  <script src="js/render-projects.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/cursor.js"></script>
   <script src="js/main.js"></script>
   <!-- Año dinámico en el footer -->
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear(); if (window.MM_I18N) window.MM_I18N.applyStatic();</script>
 
 </body>
 </html>

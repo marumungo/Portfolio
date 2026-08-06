@@ -7,18 +7,22 @@
   &.active {
     display: flex;
     flex-direction: row;
+    opacity: 1;
+    transition: opacity #{$page-transition-ms}ms ease;
+  }
+
+  &.page-leave {
+    opacity: 0;
   }
 }
 
 #home.active {
   display: flex;
-
-  @include responsive(tablet) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 }
 
-#proyectos.active {
+#proyectos.active,
+#proyecto-detalle.active {
   display: flex;
   flex-direction: column;
 }

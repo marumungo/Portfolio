@@ -14,7 +14,12 @@
 @import "components/loading-bar";
 @import "components/page-sections";
 @import "components/card";
+@import "components/cursor";
+@import "components/loader";
+@import "components/lightbox";
+@import "components/featured";
 
 // 4. Páginas
 @import "pages/home";
 @import "pages/proyectos";
+@import "pages/proyecto-detalle";

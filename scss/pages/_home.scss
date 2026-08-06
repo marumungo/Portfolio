@@ -1,10 +1,24 @@
-// HOME — LAYOUT PRINCIPAL
+// HOME - LAYOUT PRINCIPAL
 
 #home {
   padding-top: $navbar-height;
   background: $color-bg;
   overflow: hidden;
   position: relative;
+}
+
+// Fila superior: decoración + foto + contenido (lo que antes era el layout completo de #home)
+.home__hero {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: calc(100vh - #{$navbar-height} - #{$footer-height});
+  position: relative;
+
+  @include responsive(tablet) {
+    flex-direction: column;
+    min-height: 0;
+  }
 }
 
 // Imagen de fondo que cubre todo el ancho
@@ -173,7 +187,7 @@
   margin: 1rem 0 1.5rem;
 }
 
-// HOME — BLOQUE INFERIOR
+// HOME - BLOQUE INFERIOR
 .home__lower {
   display: flex;
   flex-direction: column;
@@ -271,7 +285,7 @@
   }
 }
 
-// HOME — BLOQUE CONECTEMOS
+// HOME - BLOQUE CONECTEMOS
 .home__contact-title {
   font-family: $font-body;
   font-size: 0.75rem;

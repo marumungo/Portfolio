@@ -7,12 +7,19 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s $ease-base, box-shadow 0.3s $ease-base;
+  transition: transform 0.3s $ease-base, box-shadow 0.3s $ease-base, opacity 0.22s ease;
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 40px rgba(42, 63, 77, 0.1);
   }
+}
+
+// Estado de transición al filtrar (ver applyFilter en js/main.js)
+.card--out {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
 }
 
 // Imagen de la card
@@ -127,7 +134,7 @@
   opacity: 0.9;
 }
 
-// COLORES DE CATEGORÍA POR CARD — fondos sólidos, sin transparencia
+// COLORES DE CATEGORÍA POR CARD - fondos sólidos, sin transparencia
 .card--urbano .card__body {
   background: rgb($color-category-urbano, 0.6);
 

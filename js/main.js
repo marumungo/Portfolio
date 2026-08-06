@@ -15,61 +15,95 @@
   // Filtro proyectos
   const tabs          = document.querySelectorAll('.projects__tab');
   const sidebarFilter = document.querySelectorAll('.projects__sidebar-filter');
-  const cards         = document.querySelectorAll('.card');
   const countEl       = document.querySelector('.projects__count');
   const emptyState    = document.querySelector('.projects__empty');
 
+  const PAGE_TRANSITION_MS = 220;
+
   // Navegacion
 
-  function switchPage(targetId) {
-    sections.forEach(s => {
-      s.classList.remove('active', 'page-enter');
-    });
-
-    const target = document.getElementById(targetId);
-    if (target) {
-      target.classList.add('active');
-      // Trigger reflow para animacion
-      void target.offsetWidth;
-      target.classList.add('page-enter');
-    }
-
-    // Estado active page
+  function updateNavState(activeNavId) {
     navLinks.forEach(link => {
-      link.classList.toggle('active', link.dataset.page === targetId);
+      link.classList.toggle('active', link.dataset.page === activeNavId);
     });
     mobileLinks.forEach(link => {
-      link.classList.toggle('active', link.dataset.page === targetId);
+      link.classList.toggle('active', link.dataset.page === activeNavId);
     });
-
-    // Escrolear hasta arriba
-    window.scrollTo({ top: 0, behavior: 'instant' });
-
-    // Cerrar menu movil
-    closeMobileMenu();
-
-    // Actualizar URL hash sin escrolear
-    history.replaceState(null, null, '#' + targetId);
   }
+
+  function switchPage(targetId, activeNavId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const current = document.querySelector('.page-section.active');
+
+    const finishSwitch = () => {
+      if (current && current !== target) {
+        current.classList.remove('active', 'page-leave', 'page-enter');
+      }
+      target.classList.remove('page-leave', 'page-enter');
+      target.classList.add('active');
+      // Trigger reflow para (re)disparar la animación de entrada
+      void target.offsetWidth;
+      target.classList.add('page-enter');
+
+      updateNavState(activeNavId || targetId);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      closeMobileMenu();
+    };
+
+    if (current && current !== target) {
+      current.classList.add('page-leave');
+      setTimeout(finishSwitch, PAGE_TRANSITION_MS);
+    } else {
+      finishSwitch();
+    }
+
+    history.replaceState(null, null, '#' + (targetId === 'proyecto-detalle' ? location.hash.replace('#', '') : targetId));
+  }
+
+  // Router: home, proyectos, o proyecto/{slug}
+  function route() {
+    const hash = window.location.hash.replace('#', '');
+
+    if (hash.startsWith('proyecto/')) {
+      const slug = decodeURIComponent(hash.slice('proyecto/'.length));
+      const ok = typeof window.renderProjectDetail === 'function' && window.renderProjectDetail(slug);
+      if (ok) {
+        switchPage('proyecto-detalle', 'proyectos');
+        return;
+      }
+      location.hash = '#proyectos';
+      return;
+    }
+
+    if (hash && document.getElementById(hash)) {
+      switchPage(hash);
+    } else {
+      switchPage('home');
+    }
+  }
+
+  window.addEventListener('hashchange', route);
 
   // Click en el logo/marca: siempre vuelve al inicio
   if (navBrand) {
     navBrand.addEventListener('click', (e) => {
       e.preventDefault();
-      switchPage('home');
+      location.hash = '#home';
     });
   }
 
   // Clicks de navlinks
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
-      switchPage(link.dataset.page);
+      location.hash = '#' + link.dataset.page;
     });
   });
 
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
-      switchPage(link.dataset.page);
+      location.hash = '#' + link.dataset.page;
     });
   });
 
@@ -98,35 +132,41 @@
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // URL hash durante carga
-  function handleInitialHash() {
-    const hash = window.location.hash.replace('#', '');
-    if (hash && document.getElementById(hash)) {
-      switchPage(hash);
-    } else {
-      switchPage('home');
-    }
-  }
-
   // Filtros de proyectos
   let currentFilter = 'all';
+  const FILTER_TRANSITION_MS = 220;
 
   function applyFilter(filter) {
     currentFilter = filter;
+    const cards = document.querySelectorAll('.card');
     let visible = 0;
 
     cards.forEach(card => {
       const category = card.dataset.category;
+      if (filter === 'all' || category === filter) visible++;
+    });
+
+    cards.forEach(card => {
+      const category = card.dataset.category;
       const show = filter === 'all' || category === filter;
-      card.classList.toggle('hidden', !show);
-      if (show) visible++;
+
+      if (show) {
+        card.classList.remove('hidden');
+        // Reflow antes de sacar card--out para que la transición de entrada se dispare
+        void card.offsetWidth;
+        card.classList.remove('card--out');
+      } else if (!card.classList.contains('card--out')) {
+        card.classList.add('card--out');
+        setTimeout(() => {
+          if (card.classList.contains('card--out')) card.classList.add('hidden');
+        }, FILTER_TRANSITION_MS);
+      }
     });
 
     // Actualizar la cuenta
     if (countEl) {
-      countEl.textContent = visible === 1
-        ? '1 proyecto'
-        : `${visible} proyectos`;
+      const t = window.MM_I18N ? window.MM_I18N.t : (k => k);
+      countEl.textContent = visible === 1 ? t('projects_count_singular') : t('projects_count_plural').replace('{n}', visible);
     }
 
     // Estado vacio
@@ -142,6 +182,9 @@
       btn.classList.toggle('active', btn.dataset.filter === filter);
     });
   }
+
+  // Reaplicar el filtro activo tras un re-render de cards (ej. al cambiar de idioma)
+  window.mmReapplyFilter = () => applyFilter(currentFilter);
 
   // Tabs
   tabs.forEach(tab => {
@@ -180,19 +223,13 @@
 
   // Inicio
   document.addEventListener('DOMContentLoaded', () => {
-    handleInitialHash();
+    route();
     applyFilter('all');
     observeAnimations();
-
-    // Animacion loading bar
-    const bar = document.querySelector('.loading-bar');
-    if (bar) {
-      bar.style.width = '60%';
-      setTimeout(() => {
-        bar.style.width = '100%';
-        setTimeout(() => bar.classList.add('done'), 300);
-      }, 200);
-    }
   });
+
+  // Re-observar elementos fade-up que aparecen al renderizar la página de detalle
+  const bodyObserver = new MutationObserver(() => observeAnimations());
+  bodyObserver.observe(document.body, { childList: true, subtree: true });
 
 })();

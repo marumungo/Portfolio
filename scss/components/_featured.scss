@@ -1,0 +1,173 @@
+// PROYECTOS DESTACADOS (HOME) - cinta con scroll automático infinito + flechas
+
+.home__featured {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 0 4rem;
+  border-top: 1px solid $color-border;
+
+  .home__featured-head {
+    padding: 0 $content-margin;
+  }
+
+  @include responsive(mobile) {
+    padding: 2.5rem 0 3rem;
+
+    .home__featured-head {
+      padding: 0 1.25rem;
+    }
+  }
+}
+
+.home__featured-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.home__featured-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-body;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-blue-700;
+  transition: gap 0.25s $ease-base, color $transition-fast;
+
+  &:hover {
+    gap: 0.7rem;
+    color: $color-blue-500;
+  }
+}
+
+// Viewport: contiene la cinta scrolleable + las flechas laterales
+.home__featured-viewport {
+  position: relative;
+}
+
+.home__featured-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  // scroll-behavior NO debe ser smooth: el propio loop rAF en JS ya hace el
+  // easing frame a frame; con smooth activado, el navegador anima cada
+  // micro-incremento por separado y se pisan entre sí (se siente trabado).
+  padding: 0 $content-margin;
+  // Ocultar la barra de scroll nativa (el scroll sigue funcionando)
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+
+  @include responsive(mobile) {
+    padding: 0 1.25rem;
+  }
+}
+
+.featured-card {
+  cursor: pointer;
+  flex: 0 0 220px;
+  width: 220px;
+}
+
+.featured-card__image-wrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: $radius-sm;
+  margin-bottom: 0.85rem;
+  background: $color-bg-soft;
+}
+
+.featured-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(12%);
+  transition: transform 0.6s $ease-base, filter 0.4s ease;
+}
+
+.featured-card:hover .featured-card__image {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+.featured-card__category {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: $font-body;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(27, 24, 18, 0.55);
+  backdrop-filter: blur(4px);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.featured-card__title {
+  font-family: $font-heading;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $color-text;
+  line-height: 1.25;
+  margin-bottom: 0.15rem;
+  transition: color $transition-fast;
+}
+
+.featured-card:hover .featured-card__title {
+  color: $color-blue-700;
+}
+
+.featured-card__place {
+  font-family: $font-body;
+  font-size: 0.75rem;
+  color: $color-text-muted;
+}
+
+// Flechas laterales: ocultas por defecto, aparecen al pasar el mouse por la cinta
+.home__featured-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 242, 238, 0.92);
+  border: 1px solid $color-border;
+  color: $color-blue-700;
+  font-size: 1.1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s, background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 6px 20px rgba(42, 63, 77, 0.12);
+
+  &:hover {
+    background: $color-bg;
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  &--prev { left: 0.75rem; }
+  &--next { right: 0.75rem; }
+
+  @include responsive(mobile) {
+    display: none;
+  }
+}
+
+.home__featured-viewport:hover .home__featured-arrow {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0s linear 0s, background 0.2s ease, transform 0.2s ease;
+}

@@ -12,22 +12,22 @@ $color-divider: #C4BEB6;        // Líneas divisorias decorativas
 
 // PALETA AZUL / CELESTE (color de marca)
 $color-blue-900: #0a293e;  // Azul muy oscuro (overlays, texto sobre selección)
-$color-blue-700: #3D5A6B;  // Azul acero — color principal de marca (logo, acentos)
-$color-blue-500: #6B8FA3;  // Celeste medio — hover, links, detalles
-$color-blue-300: #B8CDD6;  // Celeste claro — selección de texto, fondos suaves
-$color-blue-100: #DCE7EC;  // Celeste muy claro — fondos sutiles, bordes suaves
+$color-blue-700: #3D5A6B;  // Azul acero - color principal de marca (logo, acentos)
+$color-blue-500: #6B8FA3;  // Celeste medio - hover, links, detalles
+$color-blue-300: #B8CDD6;  // Celeste claro - selección de texto, fondos suaves
+$color-blue-100: #DCE7EC;  // Celeste muy claro - fondos sutiles, bordes suaves
 
 
 // COLORES DE CATEGORÍA (cards de proyectos)
 // Tonos derivados de la paleta azul/celeste pero diferenciados entre sí
-$color-category-urbano: #415a77;         // Azul — oscuro, requiere texto blanco
-$color-category-institucional: #A9BCC4; // Crema — claro, texto oscuro
-$color-category-residencial: #e0e1dd;   // Gris celeste — claro, texto oscuro
+$color-category-urbano: #415a77;         // Azul - oscuro, requiere texto blanco
+$color-category-institucional: #A9BCC4; // Crema - claro, texto oscuro
+$color-category-residencial: #e0e1dd;   // Gris celeste - claro, texto oscuro
 
 // Texto sobre cada categoría (según contraste)
 $color-category-urbano-text: #FFFFFF;
 $color-category-institucional-text: #3e3e3e;
-$color-category-residencial-text: $color-text-soft;
+$color-category-residencial-text: $color-text; // texto oscuro para cumplir contraste AA sobre el fondo claro
 
 // TIPOGRAFÍAS
 $font-heading: "Poppins", "DM Sans", system-ui, sans-serif; // Títulos y nombre
@@ -50,6 +50,7 @@ $ease-base: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-fast: 0.25s ease;
 $transition-base: 0.35s $ease-base;
 $transition-slow: 0.65s ease;
+$page-transition-ms: 220; // debe coincidir con PAGE_TRANSITION_MS en js/main.js
 
 // Z-INDEX
 $z-navbar: 100;
