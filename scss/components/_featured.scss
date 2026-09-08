@@ -44,28 +44,35 @@
   }
 }
 
-// Viewport: contiene la cinta scrolleable + las flechas laterales
+// Viewport: contiene la cinta + las flechas laterales.
+// La cinta NO usa scroll nativo (overflow-x/scrollLeft): se mueve con
+// transform: translateX vía JS (misma estructura que el carrusel de
+// Santilli Aparts) para evitar la familia de bugs de iOS Safari donde el
+// scrollLeft/contentSize interno no se actualiza bien, y porque un único
+// loop de rAF controla todo el movimiento (autoplay, arrastre e inercia)
+// sin que ninguno le pise la posición a otro.
 .home__featured-viewport {
   position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0 $content-margin;
+
+  &.is-dragging {
+    cursor: grabbing;
+  }
+
+  @include responsive(mobile) {
+    padding: 0 1.25rem;
+  }
 }
 
 .home__featured-track {
   display: flex;
   gap: 1.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  // scroll-behavior NO debe ser smooth: el propio loop rAF en JS ya hace el
-  // easing frame a frame; con smooth activado, el navegador anima cada
-  // micro-incremento por separado y se pisan entre sí (se siente trabado).
-  padding: 0 $content-margin;
-  // Ocultar la barra de scroll nativa (el scroll sigue funcionando)
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar { display: none; }
-
-  @include responsive(mobile) {
-    padding: 0 1.25rem;
-  }
+  will-change: transform;
 }
 
 .featured-card {

@@ -89,7 +89,7 @@
     track.innerHTML = list.map((p, i) => `
       <article class="featured-card fade-up" data-slug="${p.slug}" style="transition-delay:${(i % projects.length) * 40}ms">
         <div class="featured-card__image-wrap">
-          <img class="featured-card__image" src="${p.image}" alt="${escapeHtml(pf(p, 'imageAlt'))}" loading="lazy">
+          <img class="featured-card__image" src="${p.image}" alt="${escapeHtml(pf(p, 'imageAlt'))}" loading="lazy" draggable="false">
           <span class="featured-card__category">${categoryLabel(p.category)}</span>
         </div>
         <p class="featured-card__title">${escapeHtml(pf(p, 'titleAccent'))}</p>
@@ -106,6 +106,12 @@
     setupFeaturedScroller(track);
   }
 
+  // Cinta de destacados: misma estructura que el carrusel de departamentos
+  // de Santilli Aparts. La tira se mueve con transform: translateX vía JS
+  // en vez de scroll nativo (evita los bugs de iOS Safari con scrollLeft),
+  // y un ÚNICO loop de rAF controla autoplay, arrastre e inercia - así
+  // nunca hay dos "manos" escribiendo la posición al mismo tiempo (esa
+  // doble escritura era lo que hacía que se acelerara al mover el mouse).
   function setupFeaturedScroller(track) {
     if (featuredScroller) cancelAnimationFrame(featuredScroller.raf);
 
@@ -114,45 +120,124 @@
     const nextBtn = document.querySelector('.home__featured-arrow--next');
     if (!viewport) return;
 
-    // Ancho de un set completo (la mitad, ya que la lista está duplicada)
-    const oneSetWidth = track.scrollWidth / 2;
-    track.scrollLeft = 1; // arranca ya "en movimiento" para evitar el borde inicial
+    // La lista ya viene duplicada (ver renderFeatured) para el loop infinito
+    const items = Array.from(track.children);
+    const originales = items.slice(0, items.length / 2);
+    if (originales.length < 1) return;
 
-    const state = { paused: false, resumeTimeout: null, boost: 0 };
-    featuredScroller = state;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const SPEED = 30; // px/s en modo automático
 
-    const SPEED = 0.5; // px por frame en modo automático (~30px/s a 60fps)
+    let setW = 0;
+    let paso = 0;
+    let pos = 0;
+    let encima = false;
+    let aLaVista = true;
 
-    // Un único loop controla tanto el auto-scroll como el desplazamiento manual
-    // de las flechas, para que nunca compitan por escribir scrollLeft a la vez.
-    function tick() {
-      if (state.boost !== 0) {
-        const step = state.boost * 0.18; // easing: se acerca al objetivo cada frame
-        track.scrollLeft += step;
-        state.boost -= step;
-        if (Math.abs(state.boost) < 0.5) state.boost = 0;
-      } else if (!state.paused) {
-        track.scrollLeft += SPEED;
+    function medir() {
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      paso = originales[0].getBoundingClientRect().width + gap;
+      setW = originales.reduce((sum, item) => sum + item.getBoundingClientRect().width + gap, 0);
+    }
+    medir();
+    window.addEventListener('resize', medir);
+
+    function mover() {
+      track.style.transform = `translateX(${-pos}px)`;
+    }
+
+    new IntersectionObserver(([e]) => { aLaVista = e.isIntersecting; }, { threshold: 0.1 }).observe(viewport);
+
+    ['pointerenter', 'focusin'].forEach(ev => viewport.addEventListener(ev, () => (encima = true)));
+    ['pointerleave', 'focusout'].forEach(ev => viewport.addEventListener(ev, () => (encima = false)));
+
+    const clampPos = p => ((p % setW) + setW) % setW;
+
+    // Salto suave al hacer click en una flecha: transición CSS transitoria,
+    // se saca enseguida después para no interferir con los transform por
+    // frame del autoplay/arrastre (sería el mismo problema que scroll-behavior: smooth).
+    let jumpTimeout;
+    function manualStep(dir) {
+      pos = clampPos(pos + dir * paso);
+      track.style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+      mover();
+      clearTimeout(jumpTimeout);
+      jumpTimeout = setTimeout(() => { track.style.transition = ''; }, 460);
+    }
+    if (prevBtn) prevBtn.onclick = () => manualStep(-1);
+    if (nextBtn) nextBtn.onclick = () => manualStep(1);
+
+    // Estado de arrastre/inercia; ver nota arriba de la función.
+    let modo = 'auto'; // 'auto' | 'arrastre' | 'inercia'
+    let startX = 0, startPos = 0, pendingX = 0, velX = 0, lastMoveX = 0, lastMoveT = 0, coastV = 0;
+
+    viewport.addEventListener('pointerdown', (e) => {
+      modo = 'arrastre';
+      encima = true;
+      track.style.transition = '';
+      startX = e.clientX;
+      startPos = pos;
+      pendingX = e.clientX;
+      lastMoveX = e.clientX;
+      lastMoveT = performance.now();
+      velX = 0;
+      viewport.setPointerCapture(e.pointerId);
+      viewport.classList.add('is-dragging');
+    });
+
+    viewport.addEventListener('pointermove', (e) => {
+      if (modo !== 'arrastre') return;
+      pendingX = e.clientX;
+    });
+
+    function soltar() {
+      if (modo !== 'arrastre') return;
+      viewport.classList.remove('is-dragging');
+      if (Math.abs(velX) > 0.02) {
+        modo = 'inercia';
+        coastV = velX;
+      } else {
+        modo = 'auto';
       }
-      if (track.scrollLeft >= oneSetWidth) track.scrollLeft -= oneSetWidth;
-      if (track.scrollLeft < 0) track.scrollLeft += oneSetWidth;
+    }
+    viewport.addEventListener('pointerup', soltar);
+    viewport.addEventListener('pointercancel', soltar);
+
+    const state = {};
+    featuredScroller = state;
+    if (reduceMotion) return;
+
+    let last = performance.now();
+    function tick(now) {
+      const dtMs = now - last;
+      last = now;
+
+      if (modo === 'arrastre') {
+        const dt = now - lastMoveT;
+        if (dt > 0) {
+          velX = (lastMoveX - pendingX) / dt;
+          lastMoveX = pendingX;
+          lastMoveT = now;
+        }
+        pos = clampPos(startPos + (startX - pendingX));
+        mover();
+      } else if (modo === 'inercia') {
+        coastV *= Math.pow(0.94, dtMs / 16);
+        if (Math.abs(coastV) < 0.02) {
+          modo = 'auto';
+          encima = false;
+        } else {
+          pos = clampPos(pos + coastV * dtMs);
+          mover();
+        }
+      } else if (!encima && aLaVista) {
+        pos = (pos + SPEED * (dtMs / 1000)) % setW;
+        mover();
+      }
+
       state.raf = requestAnimationFrame(tick);
     }
     state.raf = requestAnimationFrame(tick);
-
-    viewport.addEventListener('mouseenter', () => { state.paused = true; });
-    viewport.addEventListener('mouseleave', () => { state.paused = false; });
-
-    function manualScroll(dir) {
-      const cardStep = 220 + 24; // ancho de card + gap
-      state.boost += dir * cardStep * 2;
-      clearTimeout(state.resumeTimeout);
-      state.paused = true;
-      state.resumeTimeout = setTimeout(() => { state.paused = false; }, 2500);
-    }
-
-    if (prevBtn) prevBtn.onclick = () => manualScroll(-1);
-    if (nextBtn) nextBtn.onclick = () => manualScroll(1);
   }
 
   document.addEventListener('click', e => {

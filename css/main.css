@@ -905,24 +905,26 @@ html.is-loading {
 
 .home__featured-viewport {
   position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0 3rem;
+}
+.home__featured-viewport.is-dragging {
+  cursor: grabbing;
+}
+@media (max-width: 767px) {
+  .home__featured-viewport {
+    padding: 0 1.25rem;
+  }
 }
 
 .home__featured-track {
   display: flex;
   gap: 1.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0 3rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.home__featured-track::-webkit-scrollbar {
-  display: none;
-}
-@media (max-width: 767px) {
-  .home__featured-track {
-    padding: 0 1.25rem;
-  }
+  will-change: transform;
 }
 
 .featured-card {
