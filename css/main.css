@@ -345,14 +345,24 @@ a:focus-visible, button:focus-visible, [role=button]:focus-visible, input:focus-
   padding: 1.25rem 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex: 1;
 }
 @media (max-width: 767px) {
   .site-footer__main {
+    flex-direction: column;
+    gap: 0.6rem;
     text-align: center;
     padding: 1rem 1.5rem;
   }
+}
+
+.site-footer__mark {
+  font-family: "Poppins", "DM Sans", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #F5F2EE;
+  letter-spacing: -0.01em;
 }
 
 .site-footer__tagline {
