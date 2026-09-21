@@ -333,34 +333,70 @@ a:focus-visible, button:focus-visible, [role=button]:focus-visible, input:focus-
 }
 
 .site-footer {
-  padding: 1.25rem 2rem;
-  border-top: 1px solid #E8E4DE;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  border-top: 1px solid #E8E4DE;
   background: #3D5A6B;
   flex-shrink: 0;
-  min-height: 60px;
+  min-height: 92px;
+}
+
+.site-footer__main {
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 @media (max-width: 767px) {
-  .site-footer {
-    flex-direction: column;
-    gap: 0.4rem;
+  .site-footer__main {
     text-align: center;
     padding: 1rem 1.5rem;
   }
-}
-
-.site-footer__copy {
-  font-size: 0.75rem;
-  color: #F5F2EE;
-  letter-spacing: 0.08em;
 }
 
 .site-footer__tagline {
   font-family: "Poppins", "DM Sans", system-ui, sans-serif;
   font-size: 0.875rem;
   font-style: italic;
+  color: #F5F2EE;
+}
+
+.site-footer__bottom {
+  border-top: 1px solid rgba(245, 242, 238, 0.15);
+  padding: 0.7rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+@media (max-width: 767px) {
+  .site-footer__bottom {
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+.site-footer__copy {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgba(245, 242, 238, 0.55);
+}
+
+.site-footer__credit {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgba(245, 242, 238, 0.55);
+}
+.site-footer__credit a {
+  font-weight: 700;
+  color: rgba(245, 242, 238, 0.75);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.site-footer__credit a:hover {
   color: #F5F2EE;
 }
 
@@ -381,7 +417,7 @@ a:focus-visible, button:focus-visible, [role=button]:focus-visible, input:focus-
 
 .page-section {
   display: none;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 92px);
 }
 .page-section.active {
   display: flex;
@@ -1044,7 +1080,7 @@ html.is-loading {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  min-height: calc(100vh - 72px - 60px);
+  min-height: calc(100vh - 72px - 92px);
   position: relative;
 }
 @media (max-width: 991px) {
@@ -1365,7 +1401,7 @@ html.is-loading {
   display: flex;
   flex: 1;
   min-width: 0;
-  min-height: calc(100vh - 72px - 60px);
+  min-height: calc(100vh - 72px - 92px);
 }
 @media (max-width: 991px) {
   .projects__body {

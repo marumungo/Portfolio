@@ -1,27 +1,25 @@
 // FOOTER
 
 .site-footer {
-  padding: 1.25rem 2rem;
-  border-top: 1px solid $color-border;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  border-top: 1px solid $color-border;
   background: $color-blue-700;
   flex-shrink: 0;
   min-height: $footer-height;
+}
+
+.site-footer__main {
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 
   @include responsive(mobile) {
-    flex-direction: column;
-    gap: 0.4rem;
     text-align: center;
     padding: 1rem 1.5rem;
   }
-}
-
-.site-footer__copy {
-  font-size: 0.75rem;
-  color: $color-bg;
-  letter-spacing: 0.08em;
 }
 
 .site-footer__tagline {
@@ -29,4 +27,47 @@
   font-size: 0.875rem;
   font-style: italic;
   color: $color-bg;
+}
+
+// Franja inferior - misma estética que usan los demás sitios de Deploy
+// (santilliaparts.com.ar, proyecto-s3.com.ar): barra angosta con borde
+// superior sutil, texto apagado, copyright a la izquierda y el crédito del
+// estudio a la derecha.
+.site-footer__bottom {
+  border-top: 1px solid rgba($color-bg, 0.15);
+  padding: 0.7rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  @include responsive(mobile) {
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+.site-footer__copy {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgba($color-bg, 0.55);
+}
+
+.site-footer__credit {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgba($color-bg, 0.55);
+
+  a {
+    font-weight: 700;
+    color: rgba($color-bg, 0.75);
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-bg;
+    }
+  }
 }

@@ -6,19 +6,38 @@
   <meta name="description" content="Portfolio de Mariana Mungo, arquitecta graduada de FADU-UBA. Proyectos de espacio público, dirección de obra e intervenciones urbanas, residenciales e institucionales.">
   <meta name="author" content="Mariana Mungo">
   <title>Mariana Mungo - Arquitecta</title>
+  <link rel="canonical" href="https://marumungo.github.io/Portfolio/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marumungo.github.io/Portfolio/">
   <meta property="og:title" content="Mariana Mungo - Arquitecta">
   <meta property="og:description" content="Portfolio de Mariana Mungo, arquitecta graduada de FADU-UBA. Proyectos de espacio público, dirección de obra e intervenciones urbanas, residenciales e institucionales.">
-  <meta property="og:image" content="images/foto.jpeg">
+  <meta property="og:image" content="https://marumungo.github.io/Portfolio/images/foto.jpeg">
   <meta property="og:locale" content="es_AR">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mariana Mungo - Arquitecta">
   <meta name="twitter:description" content="Portfolio de Mariana Mungo, arquitecta graduada de FADU-UBA.">
-  <meta name="twitter:image" content="images/foto.jpeg">
+  <meta name="twitter:image" content="https://marumungo.github.io/Portfolio/images/foto.jpeg">
+
+  <!-- Datos estructurados: perfil profesional -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mariana Mungo",
+    "jobTitle": "Arquitecta",
+    "url": "https://marumungo.github.io/Portfolio/",
+    "image": "https://marumungo.github.io/Portfolio/images/foto.jpeg",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "FADU-UBA"
+    },
+    "knowsAbout": ["Arquitectura", "Espacio público", "Dirección de obra", "Intervenciones urbanas"]
+  }
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
@@ -150,7 +169,7 @@
                 </span>
                 Behance
               </a>
-              <a href="https://mail.google.com/mail/?view=cm&to=marumungo@gmail.com" target="_blank" class="home__contact-link" aria-label="Email">
+              <a href="https://mail.google.com/mail/?view=cm&to=marumungo@gmail.com" target="_blank" rel="noopener" class="home__contact-link" aria-label="Email">
                 <span class="icon-wrap">
                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
                 </span>
@@ -288,8 +307,16 @@
 
   <!-- Pie de página -->
   <footer class="site-footer" role="contentinfo">
-    <p class="site-footer__copy" data-i18n-footer-copy>© <span id="year"></span> Mariana Mungo - Todos los derechos reservados.</p>
-    <p class="site-footer__tagline" data-i18n="footer_tagline">Espacios diseñados para ser habitados</p>
+    <div class="site-footer__main">
+      <p class="site-footer__tagline" data-i18n="footer_tagline">Espacios diseñados para ser habitados</p>
+    </div>
+    <div class="site-footer__bottom">
+      <p class="site-footer__copy" data-i18n-footer-copy>© <span id="year"></span> Mariana Mungo - Todos los derechos reservados.</p>
+      <p class="site-footer__credit">
+        <span data-i18n="footer_credit">Sitio realizado por</span>
+        <a href="https://deploystudio.com.ar/" target="_blank" rel="noopener noreferrer">/deploy_</a>
+      </p>
+    </div>
   </footer>
 
   <!-- Scripts -->

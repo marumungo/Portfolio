@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Página no encontrada - Mariana Mungo</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#F5F2EE">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F5F2EE;
+      --text: #2C2C2C;
+      --text-muted: #8A8A8A;
+      --blue: #3D5A6B;
+      --border: #E8E4DE;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", system-ui, sans-serif;
+    }
+    .notfound {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+    .notfound__mark {
+      font-family: "Poppins", "DM Sans", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      margin-bottom: 2.5rem;
+    }
+    .notfound__code {
+      font-family: "Poppins", "DM Sans", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: clamp(3.5rem, 10vw, 6rem);
+      line-height: 1;
+      color: var(--blue);
+      margin: 0;
+    }
+    .notfound__title {
+      font-family: "Poppins", "DM Sans", system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .notfound__text {
+      max-width: 32rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0 0 2rem;
+    }
+    .notfound__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border: 1px solid var(--blue);
+      border-radius: 2px;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .notfound__link:hover {
+      background: var(--blue);
+      color: var(--bg);
+    }
+  </style>
+</head>
+<body>
+  <div class="notfound">
+    <p class="notfound__mark">MARIANA MUNGO</p>
+    <p class="notfound__code">404</p>
+    <p class="notfound__title">Esta página no existe</p>
+    <p class="notfound__text">El enlace que seguiste puede estar roto, o la página pudo haberse movido. Volvé al inicio para seguir viendo el portfolio.</p>
+    <a class="notfound__link" href="/Portfolio/">← Volver al inicio</a>
+  </div>
+</body>
+</html>

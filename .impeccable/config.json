@@ -1,0 +1,23 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-21T01:37:23.336Z",
+        "reason": "lightbox placeholder <img id=lightboxImage> at L284, filled in dynamically by openLightbox() in render-projects.js when the modal opens - not a forgotten/broken image, unrelated to this edit"
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-09-21T01:43:18.021Z",
+        "reason": "established heading typeface for this portfolio since before this session, chosen deliberately for the site's identity - not a new/AI-default choice"
+      }
+    ]
+  }
+}

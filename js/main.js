@@ -20,6 +20,32 @@
 
   const PAGE_TRANSITION_MS = 220;
 
+  // Título de pestaña según la ruta activa (el sitio es una sola página con
+  // routing por hash, así que el <title> del HTML nunca cambiaba solo).
+  const BASE_TITLE = 'Mariana Mungo - Arquitecta';
+
+  function updateTitle(hash) {
+    const lang = window.MM_I18N ? window.MM_I18N.getLang() : 'es';
+
+    if (hash.startsWith('proyecto/')) {
+      const slug = decodeURIComponent(hash.slice('proyecto/'.length));
+      const project = typeof projects !== 'undefined' ? projects.find(p => p.slug === slug) : null;
+      if (project) {
+        const title = (lang === 'en' && project.en && project.en.title) ? project.en.title : project.title;
+        document.title = `${title} · ${BASE_TITLE}`;
+        return;
+      }
+    }
+
+    if (hash === 'proyectos') {
+      document.title = (lang === 'en' ? 'Projects' : 'Proyectos') + ` · ${BASE_TITLE}`;
+      return;
+    }
+
+    document.title = BASE_TITLE;
+  }
+  window.mmUpdateTitle = updateTitle;
+
   // Navegacion
 
   function updateNavState(activeNavId) {
@@ -71,6 +97,7 @@
       const ok = typeof window.renderProjectDetail === 'function' && window.renderProjectDetail(slug);
       if (ok) {
         switchPage('proyecto-detalle', 'proyectos');
+        updateTitle(hash);
         return;
       }
       location.hash = '#proyectos';
@@ -79,8 +106,10 @@
 
     if (hash && document.getElementById(hash)) {
       switchPage(hash);
+      updateTitle(hash);
     } else {
       switchPage('home');
+      updateTitle('home');
     }
   }
 
@@ -227,6 +256,11 @@
     applyFilter('all');
     observeAnimations();
   });
+
+  // Al cambiar de idioma, el título de la pestaña debe reflejar el nuevo idioma
+  if (window.MM_I18N) {
+    window.MM_I18N.onChange(() => updateTitle(window.location.hash.replace('#', '')));
+  }
 
   // Re-observar elementos fade-up que aparecen al renderizar la página de detalle
   const bodyObserver = new MutationObserver(() => observeAnimations());
