@@ -3,15 +3,22 @@
 .home__featured {
   position: relative;
   z-index: 1;
-  padding: 3rem 0 4rem;
+  // Una pantalla completa, con el contenido centrado (el navbar queda fijo arriba)
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(#{$navbar-height} + 1.5rem) 0 3rem;
   border-top: 1px solid $color-border;
+  background: $color-bg;
 
   .home__featured-head {
     padding: 0 $content-margin;
   }
 
   @include responsive(mobile) {
-    padding: 2.5rem 0 3rem;
+    padding: calc(#{$navbar-height} + 1.5rem) 0 3rem;
 
     .home__featured-head {
       padding: 0 1.25rem;
@@ -75,10 +82,13 @@
   will-change: transform;
 }
 
+// El ancho de la card sigue la altura de la ventana: la foto (3:4) ocupa el alto que deja libre el resto de la pantalla,
+// así la sección se ve llena en monitores grandes y no se pasa en notebooks.
 .featured-card {
+  --card-w: clamp(220px, min(80vw, calc((100svh - 330px) * 0.75)), 480px);
   cursor: pointer;
-  flex: 0 0 220px;
-  width: 220px;
+  flex: 0 0 var(--card-w);
+  width: var(--card-w);
 }
 
 .featured-card__image-wrap {
@@ -121,7 +131,7 @@
 
 .featured-card__title {
   font-family: $font-heading;
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 1.25vw, 1.3rem);
   font-weight: 600;
   color: $color-text;
   line-height: 1.25;
@@ -135,7 +145,7 @@
 
 .featured-card__place {
   font-family: $font-body;
-  font-size: 0.75rem;
+  font-size: clamp(0.75rem, 0.95vw, 0.95rem);
   color: $color-text-muted;
 }
 

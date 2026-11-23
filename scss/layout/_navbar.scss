@@ -75,15 +75,18 @@
   color: $color-text-muted;
 }
 
+// El menú hamburguesa reemplaza a los links cuando ya no entran todos en una línea
+$bp-nav: 1100px;
+
 // Links de navegación (desktop) - alineados al margen del contenido
 .navbar__links {
   display: flex;
   align-items: center;
   margin-left: auto;
-  padding-right: $content-margin;
-  gap: 3rem;
+  padding-right: clamp(1.25rem, 3vw, $content-margin);
+  gap: clamp(1.1rem, 2.4vw, 3rem);
 
-  @include responsive(tablet) {
+  @media (max-width: $bp-nav) {
     display: none;
   }
 }
@@ -177,7 +180,7 @@
   cursor: pointer;
   padding: 8px;
 
-  @include responsive(tablet) {
+  @media (max-width: $bp-nav) {
     display: flex;
   }
 
@@ -220,7 +223,7 @@
   pointer-events: none;
   transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s;
 
-  @include responsive(tablet) {
+  @media (max-width: $bp-nav) {
     display: flex;
   }
 

@@ -1,4 +1,4 @@
-// CURSOR PERSONALIZADO
+// CURSOR PERSONALIZADO: una escuadra de dibujo (guiño a la arquitectura)
 
 .cursor {
   position: fixed;
@@ -7,47 +7,43 @@
   pointer-events: none;
   z-index: 16000; // por encima del visor de galería (.lightbox, 15000) para que no quede tapado
   opacity: 0;
-  border-radius: 50%;
   transition: opacity 0.3s ease;
   will-change: transform;
 }
 
-.cursor--dot {
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
-  background: $color-blue-700;
-  transition: opacity 0.2s ease;
-}
+// Escuadra con triángulo interior y marcas de escala. Se dibuja como máscara,
+// así el color sale de "background" (azul normal, blanco sobre fondos oscuros).
+// La punta de arriba a la izquierda queda justo donde apunta el mouse.
+$cursor-square: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.3' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 3v18h18z'/%3E%3Cpath d='M6.7 11v6.3H13z'/%3E%3Cpath d='M3 9h1.2M3 13h1.2M3 17h1.2M8 21v-1.2M12 21v-1.2M16 21v-1.2'/%3E%3C/svg%3E");
 
-.cursor--ring {
-  width: 32px;
-  height: 32px;
-  margin: -16px 0 0 -16px;
-  border: 1px solid $color-blue-500;
-  transition:
-    opacity 0.3s ease,
-    width 0.25s $ease-base,
-    height 0.25s $ease-base,
-    margin 0.25s $ease-base,
-    background 0.25s ease,
-    border-color 0.25s ease;
+.cursor--dot {
+  width: 24px;
+  height: 24px;
+  margin: -3px 0 0 -3px;
+
+  // El dibujo va en ::before para poder agrandarlo/girarlo al pasar por un link
+  // sin tocar el transform con el que el JS mueve el cursor.
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: $color-blue-700;
+    opacity: 0.92;
+    -webkit-mask: $cursor-square center / contain no-repeat;
+    mask: $cursor-square center / contain no-repeat;
+    transform-origin: 3px 3px;
+    transition: transform 0.25s $ease-base, background 0.25s ease;
+  }
 }
 
 html.cursor-active .cursor {
   opacity: 1;
 }
 
-html.cursor-hover .cursor--ring {
-  width: 60px;
-  height: 60px;
-  margin: -30px 0 0 -30px;
-  background: rgba($color-blue-700, 0.06);
-  border-color: $color-blue-700;
-}
-
-html.cursor-hover .cursor--dot {
-  opacity: 0;
+// Sobre links, botones y cards: la escuadra se agranda y se inclina un poco
+html.cursor-hover .cursor--dot::before {
+  transform: scale(1.3) rotate(-10deg);
 }
 
 html.has-custom-cursor,
@@ -56,20 +52,9 @@ html.has-custom-cursor * {
 }
 
 // Sobre fondos oscuros (visor de galería, footer, cards al hacer hover), el cursor pasa a blanco para no perderse
-html.lightbox-open .cursor--dot,
-html.cursor-light .cursor--dot {
+html.lightbox-open .cursor--dot::before,
+html.cursor-light .cursor--dot::before {
   background: #fff;
-}
-
-html.lightbox-open .cursor--ring,
-html.cursor-light .cursor--ring {
-  border-color: rgba(255, 255, 255, 0.85);
-}
-
-html.lightbox-open.cursor-hover .cursor--ring,
-html.cursor-light.cursor-hover .cursor--ring {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: #fff;
 }
 
 @media (pointer: coarse) {
@@ -79,7 +64,7 @@ html.cursor-light.cursor-hover .cursor--ring {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cursor--ring {
-    transition: opacity 0.3s ease;
+  .cursor--dot::before {
+    transition: none;
   }
 }

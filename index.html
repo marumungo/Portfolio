@@ -68,7 +68,6 @@
 
   <!-- Cursor personalizado (desktop) -->
   <div class="cursor cursor--dot" id="cursorDot" aria-hidden="true"></div>
-  <div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
 
   <!-- Barra de navegación principal -->
   <nav class="navbar" role="navigation" aria-label="Navegación principal">
@@ -80,8 +79,12 @@
       </span>
     </a>
     <div class="navbar__links">
-      <button class="navbar__link active" data-page="home" aria-current="page" data-i18n="nav_home">Home</button>
-      <button class="navbar__link" data-page="proyectos" data-i18n="nav_projects">Proyectos</button>
+      <button class="navbar__link active" data-page="home" aria-current="page" data-i18n="nav_home">Inicio</button>
+      <button class="navbar__link" data-section="como-trabajo" data-i18n="nav_how">Cómo trabajo</button>
+      <button class="navbar__link" data-section="trayectoria" data-i18n="nav_path">Trayectoria</button>
+      <button class="navbar__link" data-section="herramientas" data-i18n="nav_tools">Herramientas</button>
+      <button class="navbar__link" data-section="destacados" data-i18n="nav_projects">Proyectos</button>
+      <button class="navbar__link" data-section="contacto" data-i18n="nav_contact">Contacto</button>
       <div class="navbar__lang" role="group" aria-label="Idioma / Language">
         <button class="navbar__lang-option active" type="button" data-lang-set="es">ES</button>
         <span class="navbar__lang-sep">/</span>
@@ -96,8 +99,12 @@
 
   <!-- Menú desplegable para dispositivos móviles -->
   <nav class="navbar__mobile" aria-label="Menú móvil">
-    <a data-page="home" class="active" data-i18n="nav_home">Home</a>
-    <a data-page="proyectos" data-i18n="nav_projects">Proyectos</a>
+    <a data-page="home" class="active" data-i18n="nav_home">Inicio</a>
+    <a data-section="como-trabajo" data-i18n="nav_how">Cómo trabajo</a>
+    <a data-section="trayectoria" data-i18n="nav_path">Trayectoria</a>
+    <a data-section="herramientas" data-i18n="nav_tools">Herramientas</a>
+    <a data-section="destacados" data-i18n="nav_projects">Proyectos</a>
+    <a data-section="contacto" data-i18n="nav_contact">Contacto</a>
     <div class="navbar__lang navbar__lang--mobile" role="group" aria-label="Idioma / Language">
       <button class="navbar__lang-option active" type="button" data-lang-set="es">ES</button>
       <span class="navbar__lang-sep">/</span>
@@ -150,53 +157,165 @@
           </p>
         </div>
 
-      <div class="home__divider fade-up"></div>
-        <!-- Fila inferior: cita + Conectemos -->
-        <div class="home__lower-row fade-up">
-
-          <div class= "home__contact home__contact--bottom">
-            <p class="home__contact-title" data-i18n="home_contact_title">Conectemos</p>
-            <div class="home__contact-links">
-              <a href="https://www.linkedin.com/in/marumungo" target="_blank" rel="noopener" class="home__contact-link" aria-label="LinkedIn">
-                <span class="icon-wrap">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </span>
-                LinkedIn
-              </a>
-              <a href="https://www.behance.net/marumungo" target="_blank" rel="noopener" class="home__contact-link" aria-label="Behance">
-                <span class="icon-wrap">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.726-3h3.543c-.065-1.617-.969-2.316-1.77-2.316-.858 0-1.664.652-1.773 2.316zm-7 3H1V5h7.927c2.28 0 3.557 1.18 3.557 3.038 0 1.226-.635 2.122-1.697 2.541 1.379.349 2.205 1.383 2.205 2.975C13.992 15.856 12.422 17 10 17zm-5.5-8.5v2h3.5c.688 0 1.128-.476 1.128-1.012C9.128 8.976 8.688 8.5 8 8.5H4.5zm0 4v2.5h3.5c.898 0 1.355-.563 1.355-1.238 0-.676-.457-1.262-1.355-1.262H4.5z"/></svg>
-                </span>
-                Behance
-              </a>
-              <a href="https://mail.google.com/mail/?view=cm&to=marumungo@gmail.com" target="_blank" rel="noopener" class="home__contact-link" aria-label="Email">
-                <span class="icon-wrap">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-                </span>
-                marumungo@gmail.com
-              </a>
-              <a href="documents/CV - Mariana Mungo.pdf" target="_blank" rel="noopener" class="home__contact-link" aria-label="Curriculum Vitae">
-                <span class="icon-wrap">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 4h5v5h6v11H6V4zm2 8h8v1H8v-1zm0 2h8v1H8v-1zm0 2h5v1H8v-1z"/></svg>
-                </span>
-                <span data-i18n="home_cv_label">Curriculum Vitae</span>
-              </a>
-            </div>
-          </div>
-
-          <blockquote class="home__quote">
-            <p data-i18n="home_quote">
-              "Diseñar espacios es interpretar necesidades y descubrir oportunidades."
-            </p>
-          </blockquote>
+        <div class="home__hero-cta fade-up">
+          <button type="button" class="home__btn" data-go-section="contacto">
+            <span data-i18n="hero_contact_btn">Contactame</span> <span aria-hidden="true">↓</span>
+          </button>
         </div>
+
       </div>
     </div>
 
     </div><!-- /.home__hero -->
 
+    <!-- Cómo trabajo -->
+    <section id="como-trabajo" class="home__panel home__panel--soft" aria-labelledby="howTitle">
+      <div class="home__panel-bg" aria-hidden="true"><img src="images/projects/plaza-borges/gallery/card.webp" alt="" loading="lazy"></div>
+      <div class="home__panel-inner">
+        <h2 class="home__panel-label fade-up" id="howTitle" data-i18n="how_label">Cómo trabajo</h2>
+        <blockquote class="home__lead fade-up">
+          <p data-i18n="home_quote">"Diseñar espacios es interpretar necesidades y descubrir oportunidades."</p>
+        </blockquote>
+        <div class="home__pillars">
+          <article class="home__pillar fade-up">
+            <span class="home__pillar-num" aria-hidden="true">01</span>
+            <h3 data-i18n="how_1_title">Mirada técnica y creativa</h3>
+            <p data-i18n="how_1_text">Combino el criterio técnico de la obra con la sensibilidad del diseño, acompañando cada proyecto desde la idea hasta su materialización.</p>
+          </article>
+          <article class="home__pillar fade-up">
+            <span class="home__pillar-num" aria-hidden="true">02</span>
+            <h3 data-i18n="how_2_title">Del proyecto a la obra</h3>
+            <p data-i18n="how_2_text">Elaboro planos y replanteos, coordino con contratistas y hago el seguimiento en obra con visitas e inspecciones para asegurar que lo proyectado se cumpla.</p>
+          </article>
+          <article class="home__pillar fade-up">
+            <span class="home__pillar-num" aria-hidden="true">03</span>
+            <h3 data-i18n="how_3_title">Tecnología al servicio del proyecto</h3>
+            <p data-i18n="how_3_text">Mi formación en programación y en metodología BIM me permite incorporar nuevas herramientas y trabajar de forma cada vez más integrada y eficiente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formación y experiencia -->
+    <section id="trayectoria" class="home__panel" aria-labelledby="pathTitle">
+      <div class="home__panel-inner">
+        <h2 class="home__panel-label fade-up" id="pathTitle" data-i18n="path_label">Formación y experiencia</h2>
+        <div class="home__path">
+
+          <!-- Experiencia -->
+          <div class="home__exp-col fade-up">
+            <h3 class="home__block-title" data-i18n="path_exp_title">Experiencia laboral</h3>
+            <article class="home__exp">
+              <div class="home__exp-body">
+                <p class="home__item-title" data-i18n="exp_1_role">Arquitecta - Gobierno de la Ciudad de Buenos Aires</p>
+                <p class="home__item-meta" data-i18n="exp_1_date">Junio 2025 - Actualidad</p>
+                <p class="home__item-text" data-i18n="exp_1_text"></p>
+              </div>
+              <a class="home__btn home__btn--light" href="#proyectos">
+                <span data-i18n="exp_cta">Ver proyectos y obras</span> <span aria-hidden="true">→</span>
+              </a>
+            </article>
+          </div>
+
+          <!-- Formación -->
+          <div class="home__study fade-up">
+            <h3 class="home__block-title" data-i18n="path_study_title">Formación</h3>
+            <div class="home__study-grid">
+              <div>
+                <h4 class="home__path-title" data-i18n="path_edu_title">Estudios</h4>
+                <div class="home__item">
+                  <p class="home__item-title" data-i18n="edu_1_title">Arquitectura - FADU, UBA</p>
+                  <p class="home__item-meta">2020 - 2025</p>
+                  <p class="home__item-text" data-i18n="edu_1_text"></p>
+                  <span class="home__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-3 5 3-1.5-7.5"/></svg><span data-i18n="badge_honor">Diploma de honor</span></span>
+                </div>
+                <div class="home__item">
+                  <p class="home__item-title" data-i18n="edu_2_title">Bachiller en lenguas - Colegio del Libertador</p>
+                  <p class="home__item-meta">2015 - 2019</p>
+                  <p class="home__item-text" data-i18n="edu_2_text"></p>
+                  <span class="home__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-3 5 3-1.5-7.5"/></svg><span data-i18n="badge_honor">Diploma de honor</span></span>
+                </div>
+                <h4 class="home__path-title home__path-title--spaced" data-i18n="path_lang_title">Idiomas</h4>
+                <ul class="home__rows">
+                  <li><span class="home__tool-name" data-i18n="lang_en_name">Inglés</span><span class="home__tool-level" data-i18n="lvl_int_adv"></span></li>
+                  <li><span class="home__tool-name" data-i18n="lang_pt_name">Portugués</span><span class="home__tool-level" data-i18n="lvl_basic"></span></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="home__path-title" data-i18n="path_courses_title">Cursos y certificaciones</h4>
+                <div class="home__item">
+                  <p class="home__item-title" data-i18n="course_1_title"></p>
+                  <p class="home__item-meta">2026</p>
+                  <p class="home__item-text" data-i18n="course_1_text"></p>
+                </div>
+                <div class="home__item">
+                  <p class="home__item-title" data-i18n="course_2_title"></p>
+                  <p class="home__item-meta">2022 - 2023</p>
+                  <p class="home__item-text" data-i18n="course_2_text"></p>
+                </div>
+                <div class="home__item">
+                  <p class="home__item-title" data-i18n="course_3_title"></p>
+                  <p class="home__item-meta">2018</p>
+                  <p class="home__item-text" data-i18n="course_3_text"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Herramientas y BIM -->
+    <section id="herramientas" class="home__panel home__panel--soft" aria-labelledby="toolsTitle">
+      <div class="home__panel-inner">
+        <h2 class="home__panel-label fade-up" id="toolsTitle" data-i18n="tools_label">Herramientas y BIM</h2>
+        <div class="home__tools">
+
+          <!-- Metodología BIM: texto, foto del proyecto y botón al PDF -->
+          <div class="home__bim fade-up">
+            <h3 class="home__bim-title" data-i18n="bim_title">Metodología BIM</h3>
+            <p class="home__bim-text" data-i18n="bim_text"></p>
+            <ul class="home__chips">
+              <li data-i18n="bim_chip_1">Modelado BIM</li>
+              <li data-i18n="bim_chip_2">Desarrollo de familias</li>
+              <li data-i18n="bim_chip_3">Documentación técnica</li>
+              <li data-i18n="bim_chip_4">Cómputos métricos</li>
+            </ul>
+            <a class="home__bim-shot" href="#proyecto/proyecto-vivienda-bim" aria-label="Vivienda unifamiliar BIM">
+              <img src="images/projects/proyecto-vivienda-bim/gallery/card.webp" alt="" loading="lazy">
+              <span class="home__bim-shot-cap" data-i18n="bim_shot_cap">Trabajo final integrador · Vivienda unifamiliar</span>
+            </a>
+            <div class="home__bim-cta">
+              <a class="home__btn" href="documents/Trabajo final BIM - Mariana Mungo.pdf" target="_blank" rel="noopener">
+                <span data-i18n="bim_cta">Ver mi trabajo final</span>
+                <span class="home__btn-meta" data-i18n="bim_cap">PDF</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Herramientas -->
+          <div class="home__software fade-up">
+            <h3 class="home__path-title" data-i18n="tools_list_title">Herramientas</h3>
+            <ul class="home__rows home__rows--meter">
+              <li><span class="home__tool-name">AutoCAD</span><span class="home__meter" data-level="5" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_adv"></span></li>
+              <li><span class="home__tool-name">Revit (BIM)</span><span class="home__meter" data-level="4" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_int_adv"></span></li>
+              <li><span class="home__tool-name">SketchUp</span><span class="home__meter" data-level="5" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_adv"></span></li>
+              <li><span class="home__tool-name">Lumion</span><span class="home__meter" data-level="4" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_int_adv"></span></li>
+              <li><span class="home__tool-name">Photoshop / Illustrator</span><span class="home__meter" data-level="5" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_adv"></span></li>
+              <li><span class="home__tool-name">Microsoft Office</span><span class="home__meter" data-level="5" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_adv"></span></li>
+              <li><span class="home__tool-name">V-Ray / D5 Render</span><span class="home__meter" data-level="2" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_basic"></span></li>
+              <li><span class="home__tool-name">QGIS</span><span class="home__meter" data-level="3" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="home__tool-level" data-i18n="lvl_basic_int"></span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- Proyectos destacados -->
-    <div class="home__featured">
+    <div id="destacados" class="home__featured">
       <div class="home__featured-head fade-up">
         <p class="home__section-label" data-i18n="home_featured_label">Proyectos destacados</p>
         <button class="home__featured-all" type="button" data-nav="proyectos">
@@ -209,6 +328,55 @@
         <button class="home__featured-arrow home__featured-arrow--next" type="button" aria-label="Siguiente">→</button>
       </div>
     </div>
+
+    <!-- Conectemos (cierre del recorrido) -->
+    <section id="contacto" class="home__panel home__panel--soft home__connect" aria-labelledby="connectTitle">
+      <div class="home__panel-inner">
+        <h2 class="home__panel-label fade-up" id="connectTitle" data-i18n="home_contact_title">Conectemos</h2>
+        <div class="home__connect-wrap">
+          <div>
+          <p class="home__lead home__lead--small fade-up" data-i18n="connect_text">Si te interesa mi trabajo o querés conversar sobre un proyecto, escribime o encontrame en estas redes.</p>
+          <div class="home__connect-links fade-up">
+            <div class="home__contact-links">
+                <a href="https://www.linkedin.com/in/marumungo" target="_blank" rel="noopener" class="home__contact-link" aria-label="LinkedIn">
+                  <span class="icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  </span>
+                  LinkedIn
+                </a>
+                <a href="https://www.behance.net/marumungo" target="_blank" rel="noopener" class="home__contact-link" aria-label="Behance">
+                  <span class="icon-wrap">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.726-3h3.543c-.065-1.617-.969-2.316-1.77-2.316-.858 0-1.664.652-1.773 2.316zm-7 3H1V5h7.927c2.28 0 3.557 1.18 3.557 3.038 0 1.226-.635 2.122-1.697 2.541 1.379.349 2.205 1.383 2.205 2.975C13.992 15.856 12.422 17 10 17zm-5.5-8.5v2h3.5c.688 0 1.128-.476 1.128-1.012C9.128 8.976 8.688 8.5 8 8.5H4.5zm0 4v2.5h3.5c.898 0 1.355-.563 1.355-1.238 0-.676-.457-1.262-1.355-1.262H4.5z"/></svg>
+                  </span>
+                  Behance
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=marumungo@gmail.com" target="_blank" rel="noopener" class="home__contact-link" aria-label="Email">
+                  <span class="icon-wrap">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                  </span>
+                  marumungo@gmail.com
+                </a>
+              </div>
+          </div>
+          </div>
+          <div class="home__cv fade-up">
+          <a class="home__cv-main" href="documents/CV - Mariana Mungo.pdf" data-href-es="documents/CV - Mariana Mungo.pdf" data-href-en="documents/CV - Mariana Mungo EN.pdf" target="_blank" rel="noopener" download>
+            <span class="home__cv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
+            <span class="home__cv-text">
+              <span class="home__cv-title" data-i18n="cv_btn">Descargar CV</span>
+              <span class="home__cv-hint" data-i18n="cv_hint_es">PDF · Español</span>
+            </span>
+            <span class="home__cv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></span>
+          </a>
+          <div class="home__cv-langs" role="group" data-i18n-aria="cv_langs_label" aria-label="Elegir idioma del CV">
+            <span class="home__cv-langs-label" data-i18n="cv_langs_title">Idioma</span>
+            <button type="button" data-cv-lang="es" aria-label="Español" aria-pressed="true">ES</button>
+            <button type="button" data-cv-lang="en" aria-label="English" aria-pressed="false">EN</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
 
   </section>
 

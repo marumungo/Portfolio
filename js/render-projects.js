@@ -78,6 +78,7 @@
   // ---------- HOME: PROYECTOS DESTACADOS (cinta infinita con flechas) ----------
 
   let featuredScroller = null; // { raf, paused, oneSetWidth }
+  let featuredDragged = false; // true justo después de arrastrar la cinta: ese click no debe abrir el proyecto
 
   function renderFeatured() {
     const track = document.querySelector('.home__featured-track');
@@ -99,6 +100,7 @@
 
     track.querySelectorAll('.featured-card').forEach(card => {
       card.addEventListener('click', () => {
+        if (featuredDragged) return;
         location.hash = `#proyecto/${card.dataset.slug}`;
       });
     });
@@ -171,28 +173,40 @@
     let modo = 'auto'; // 'auto' | 'arrastre' | 'inercia'
     let startX = 0, startPos = 0, pendingX = 0, velX = 0, lastMoveX = 0, lastMoveT = 0, coastV = 0;
 
+    // El arrastre recién empieza cuando el puntero se movió unos píxeles. Capturar el puntero en
+    // el pointerdown hacía que el click ya no llegara a la card (ni a las flechas), y no se podía
+    // abrir ningún proyecto.
+    const DRAG_THRESHOLD = 6;
+    let pressed = false;
+
     viewport.addEventListener('pointerdown', (e) => {
-      modo = 'arrastre';
-      encima = true;
-      track.style.transition = '';
+      if (e.button !== 0 || e.target.closest('.home__featured-arrow')) return;
+      pressed = true;
       startX = e.clientX;
       startPos = pos;
-      pendingX = e.clientX;
-      lastMoveX = e.clientX;
-      lastMoveT = performance.now();
-      velX = 0;
-      viewport.setPointerCapture(e.pointerId);
-      viewport.classList.add('is-dragging');
     });
 
     viewport.addEventListener('pointermove', (e) => {
-      if (modo !== 'arrastre') return;
-      pendingX = e.clientX;
+      if (pressed && modo !== 'arrastre' && Math.abs(e.clientX - startX) > DRAG_THRESHOLD) {
+        modo = 'arrastre';
+        encima = true;
+        track.style.transition = '';
+        pendingX = e.clientX;
+        lastMoveX = e.clientX;
+        lastMoveT = performance.now();
+        velX = 0;
+        viewport.setPointerCapture(e.pointerId);
+        viewport.classList.add('is-dragging');
+      }
+      if (modo === 'arrastre') pendingX = e.clientX;
     });
 
     function soltar() {
+      pressed = false;
       if (modo !== 'arrastre') return;
       viewport.classList.remove('is-dragging');
+      featuredDragged = true;
+      setTimeout(() => { featuredDragged = false; }, 100);
       if (Math.abs(velX) > 0.02) {
         modo = 'inercia';
         coastV = velX;

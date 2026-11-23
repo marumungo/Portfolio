@@ -6,13 +6,11 @@
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
   const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  if (!dot || !ring) return;
+  if (!dot) return;
 
   document.documentElement.classList.add('has-custom-cursor');
 
   let mouseX = -100, mouseY = -100;
-  let ringX = -100, ringY = -100;
   let started = false;
 
   document.addEventListener('mousemove', e => {
@@ -21,8 +19,6 @@
     dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     if (!started) {
       started = true;
-      ringX = mouseX;
-      ringY = mouseY;
       document.documentElement.classList.add('cursor-active');
     }
   });
@@ -37,14 +33,6 @@
   // Evita el "fantasma" de arrastre nativo del navegador al re-arrastrar un texto
   // ya seleccionado, que aparece pegado al cursor y tapa al cursor personalizado.
   document.addEventListener('dragstart', e => e.preventDefault());
-
-  function tick() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
 
   const HOVER_SELECTOR = 'a, button, .card, input, textarea, select, [role="button"]';
   const LIGHT_SELECTOR = '.site-footer, .card, .featured-card';
